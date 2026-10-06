@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T36 &middot; scorecard-rows</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T36 - ONE subject scored on SEVERAL IDENTICAL small-integer scales, with the total as the
+     display element. Use for self-assessment worksheets, maturity rubrics, readiness scores and
+     audit sheets - anywhere the article hands the reader an instrument to fill in.
+
+     Different from its neighbours: T18 bar-ranking asks which of several things is biggest,
+     T22 column-compare scores TWO options across categories, T19 gauge-target puts ONE measure
+     against a threshold. This is one subject, many identical scales, and a sum.
+
+     Rules that keep it honest:
+       * the filled cells must equal the stated score, and the row count x scale must equal the
+         total - a reader will count them;
+       * NO headline. The total is the one display element (house rule), so the rows carry the
+         context instead;
+       * empty cells get a visible fill, not a hairline - an outline-only cell disappears at blog
+         width and the scale stops being countable.
+     THREE SIZES: --fs-xl (the total), --fs-md (dimension names + scores), --fs-sm (everything else). */
+  .sc{width:856px;display:flex;flex-direction:column;gap:34px}
+
+  .sc-top{display:flex;align-items:baseline;gap:18px}
+  .sc-top .sc-tot{font-family:var(--font-head);font-weight:800;font-size:var(--fs-xl);
+                  letter-spacing:-.028em;color:var(--ink);line-height:1}
+  .sc-top .sc-of{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--muted)}
+  .sc-sub{font-size:var(--fs-sm);color:var(--muted);line-height:1.45;margin-top:-18px;max-width:88%}
+
+  .sc-rows{display:flex;flex-direction:column;gap:20px;width:100%}
+  .sc-r{display:grid;grid-template-columns:250px 1fr 40px;align-items:center;gap:22px}
+  .sc-r .sc-k{font-family:var(--font-head);font-weight:700;font-size:var(--fs-md);color:var(--ink);
+              line-height:1.22}
+  .sc-cells{display:flex;gap:10px}
+  .sc-cells i{display:block;flex:1;height:54px;border-radius:10px;background:var(--brand-soft)}
+  .sc-cells i.on{background:var(--brand)}
+  .sc-v{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--ink);
+        text-align:right}
+
+  .sc-band{border:2px dashed var(--brand);background:var(--brand-soft);border-radius:16px;
+           padding:24px 28px;display:flex;flex-direction:column;gap:6px}
+  .sc-band b{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--ink)}
+  .sc-band span{font-size:var(--fs-sm);color:var(--muted);line-height:1.45}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top" style="gap:26px">
+    <div class="fill col" style="gap:0;justify-content:center">
+      <div class="sc">
+        <div class="sc-top"><span class="sc-tot">16</span><span class="sc-of">out of 30</span></div>
+        <div class="sc-sub">Who scored it, and what they were scoring it for.</div>
+
+        <div class="sc-rows">
+          <div class="sc-r"><span class="sc-k">First dimension</span>
+            <span class="sc-cells"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+            <span class="sc-v">2</span></div>
+          <div class="sc-r"><span class="sc-k">Second dimension</span>
+            <span class="sc-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+            <span class="sc-v">4</span></div>
+          <div class="sc-r"><span class="sc-k">Third dimension</span>
+            <span class="sc-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+            <span class="sc-v">3</span></div>
+          <div class="sc-r"><span class="sc-k">Fourth dimension</span>
+            <span class="sc-cells"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+            <span class="sc-v">1</span></div>
+          <div class="sc-r"><span class="sc-k">Fifth dimension</span>
+            <span class="sc-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+            <span class="sc-v">3</span></div>
+          <div class="sc-r"><span class="sc-k">Sixth dimension</span>
+            <span class="sc-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+            <span class="sc-v">3</span></div>
+        </div>
+
+        <div class="sc-band">
+          <b>The band this total falls in, named</b>
+          <span>and the one thing it says to do next, because a score that changes nothing is
+            not worth drawing.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T17 · stat-tiles</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T17 — 3 numbers a reader can quote. Every number needs its source named on the tile;
+     an unsourced statistic in an image is the fastest way to lose trust. 3 tiles, never 5. */
+  .st3{display:flex;gap:26px;width:100%}
+  .st3 .tile{padding:34px 30px;gap:10px}
+  .st3 .tile .n{font-size:62px}
+  .st3 .tile .l{font-size:17px;line-height:1.35;color:var(--ink);font-weight:600}
+  .src{font-size:13.5px;color:var(--muted);margin-top:auto;padding-top:14px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title">The numbers that matter</div>
+
+    <div class="fill">
+      <div class="st3">
+        <div class="tile"><span class="n">99.5%</span><span class="l">What good looks like on the first measure</span>
+          <span class="src">Source name, 2026</span></div>
+        <div class="tile accent"><span class="n">24 h</span><span class="l">The threshold on the second measure</span>
+          <span class="src">Source name, 2026</span></div>
+        <div class="tile"><span class="n" style="color:var(--ok)">7 d</span><span class="l">The target on the third measure</span>
+          <span class="src">Source name, 2026</span></div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,260 @@
+/* ============================================================
+   IN-ARTICLE DIAGRAM KIT — base.css  (brand-agnostic structure)
+   ------------------------------------------------------------
+   Pair with a brand file that defines the tokens below:
+     <link rel="stylesheet" href="<...>/brand.css">   <- tokens + fonts
+     <link rel="stylesheet" href="<...>/_system/base.css">
+   Idiom: flat explainer diagrams. Big shapes, huge whitespace,
+   labels under objects, 2-6 elements max, readable in ~2 seconds.
+   NOT product-UI screenshots and NOT marketing charts.
+   ============================================================ */
+
+/* ---------- fallbacks so a template renders even with no brand file ----------
+   :where() ON PURPOSE — it has ZERO specificity. The brand file is linked
+   BEFORE this one, so a plain `:root{}` here would load later at equal specificity
+   and silently override every token the brand file just set. That bug is invisible
+   whenever the fallbacks happen to resemble the brand, and obvious only when a very
+   different brand renders in the fallback colours.
+   Keep the :where(). Never put a BRAND token in a bare `:root{}` block in this file
+   (the --fs-* type scale below is fine — no brand file sets those). */
+:where(:root){
+  --brand:#3b5bdb; --brand-2:#7048e8; --brand-soft:#dfe5fb;
+  --grad-brand:linear-gradient(135deg,#7048e8,#3b5bdb);
+  --ink:#101828; --muted:#667085; --line:#d0d5dd; --hair:#eaecf0;
+  --canvas:#f2f4f7; --surface:#ffffff;
+  --ok:#12b76a; --ok-soft:#d1fadf; --warn:#f79009; --warn-soft:#fef0c7;
+  --bad:#f04438; --bad-soft:#fee4e2;
+  --a1:#7048e8; --a2:#3b5bdb; --a3:#12b76a; --a4:#f79009; --a5:#ee46bc;
+  --a1-soft:#e8e0fd; --a2-soft:#dfe5fb; --a3-soft:#d6f7e6; --a4-soft:#fdeecd; --a5-soft:#fbe3f4;
+  --font-head:'Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --r-sm:8px; --r-md:14px; --r-lg:22px;
+  --lift:0 10px 28px -14px rgba(16,24,40,.22);   /* whisper-soft only */
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow:hidden}
+body{
+  font-family:var(--font-body); color:var(--ink); background:var(--canvas);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- the canvases (class goes on <body>) ----------
+   ONLY TWO RATIOS ARE IN USE: 16:9 and 1:1. 9:16 is retired —
+   do not author new r916 files. The rule is kept only so any legacy file still renders. */
+body.r169{width:1200px;height:675px}            /* render 1200x675  @2x = 2400x1350 */
+body.r11 {width:1000px;height:1000px}           /* render 1000x1000 @2x = 2000x2000 */
+body.r916{width:675px; height:1200px}           /* DEPRECATED — do not use */
+
+.stage{position:relative;width:100%;height:100%;display:flex;flex-direction:column;
+       align-items:center;justify-content:center;gap:36px;padding:64px 72px 84px}
+body.r11  .stage{padding:72px 72px 92px}
+body.r916 .stage{padding:72px 52px 92px;gap:30px}   /* deprecated */
+.stage.top{justify-content:flex-start}
+.stage.left{align-items:flex-start}
+/* .stage.top pins the headline to the top — wrap the diagram in .fill so it centres in
+   the space that is left instead of hugging the title and leaving dead canvas below. */
+.fill{flex:1;display:flex;align-items:center;justify-content:center;width:100%}
+.fill.col{flex-direction:column}
+
+/* ---------- flow grid: graphics on one baseline, labels on another ----------
+   Author the graphic cells first (one per column, arrows included), then the label
+   cells in the same order (empty <div></div> under each arrow). Keeps arrows centred
+   on the shapes instead of on shape+label. Set grid-template-columns inline. */
+.fgrid{display:grid;grid-template-rows:auto auto;align-items:center;justify-items:center;
+       column-gap:30px;row-gap:22px}
+.fgrid > *{align-self:center}
+
+/* ============================================================
+   TYPE DISCIPLINE — THREE SIZES PER IMAGE, NO MORE.
+   House rule: more than three type sizes (or more than three text colours) reads as
+   chaos at blog width. Pick one size from each row below and reuse it for EVERYTHING in the image,
+   including .site and .credit. Hierarchy comes from weight and colour, not from inventing a fourth
+   size. Colours: --ink for primary, --muted for supporting, and accents ONLY where they encode
+   meaning (good vs bad, this-one-not-that-one) — never for decoration.
+   ============================================================ */
+:root{
+  --fs-xl:46px;      /* the ONE display element: a headline OR the hero number, not both */
+  --fs-md:21px;      /* labels on objects, card titles, row headings */
+  --fs-sm:15.5px;    /* supporting copy, captions, .site, .credit — the floor */
+}
+
+/* ---------- site domain (bottom-right) + attribution (bottom-left) ----------
+   Same size, same colour, same baseline — they read as one footer line, not two stray notes.
+   An absolutely-positioned child is placed against the stage's PADDING BOX, so a hand-rolled
+   `left:0` sits hard against the canvas edge and gets clipped. Always use these classes. */
+.site,.credit{position:absolute;bottom:32px;font-size:var(--fs-sm);line-height:1.35;
+              color:var(--muted);opacity:.85}
+.site{right:40px;font-family:var(--font-head);font-weight:600;letter-spacing:.005em}
+.credit{left:40px;max-width:58%}
+body.r916 .site{right:32px;bottom:30px}
+
+/* ---------- optional headline (top-left, like the reference set) ---------- */
+.t-title{align-self:flex-start;font-family:var(--font-head);font-weight:800;font-size:46px;
+         letter-spacing:-.022em;line-height:1.06;color:var(--ink)}
+.t-title.sm{font-size:34px}
+.t-sub{align-self:flex-start;font-size:17px;color:var(--muted);margin-top:-18px;max-width:70%}
+body.r916 .t-title{font-size:38px}
+body.r11  .t-title{font-size:42px}
+
+/* ---------- labels & captions ---------- */
+.lab{font-family:var(--font-head);font-weight:700;font-size:21px;color:var(--ink);
+     text-align:center;line-height:1.28;letter-spacing:-.01em}
+.lab.sm{font-size:17px}
+.cap{font-size:15.5px;color:var(--muted);text-align:center;line-height:1.4;margin-top:6px}
+.eyebrow{font-family:var(--font-head);font-weight:700;font-size:12.5px;letter-spacing:.09em;
+         text-transform:uppercase;color:var(--brand)}
+.num{font-family:var(--font-head);font-weight:800;font-size:14px;color:#fff;background:var(--brand);
+     width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;
+     justify-content:center;flex:none}
+.num.dark{background:var(--ink)}
+.mono{font-family:var(--font-mono)}
+
+/* ---------- nodes: the basic "thing" in a diagram ---------- */
+.node{width:132px;height:132px;border-radius:50%;background:var(--surface);border:2px solid var(--line);
+      display:flex;align-items:center;justify-content:center;flex:none;color:var(--brand)}
+.node.sq{border-radius:26px}
+.node.lg{width:172px;height:172px}
+.node.sm{width:96px;height:96px}
+.node.xs{width:66px;height:66px}
+.node.fill{background:var(--brand);border-color:var(--brand);color:#fff}
+.node.grad{background:var(--grad-brand);border:none;color:#fff}
+.node.tint{background:var(--brand-soft);border-color:transparent}
+.node.a1{background:var(--a1-soft);border-color:transparent;color:var(--a1)}
+.node.a2{background:var(--a2-soft);border-color:transparent;color:var(--a2)}
+.node.a3{background:var(--a3-soft);border-color:transparent;color:var(--a3)}
+.node.a4{background:var(--a4-soft);border-color:transparent;color:var(--a4)}
+.node.a5{background:var(--a5-soft);border-color:transparent;color:var(--a5)}
+.node svg{width:52%;height:52%;stroke:currentColor;fill:none;stroke-width:1.7;
+          stroke-linecap:round;stroke-linejoin:round}
+.node.lg svg{width:48%;height:48%}
+.node .glyph{font-family:var(--font-head);font-weight:800;font-size:34px;letter-spacing:-.02em}
+
+/* a node + its label stacked */
+.unit{display:flex;flex-direction:column;align-items:center;gap:18px;flex:none}
+.unit.tight{gap:12px}
+
+/* ---------- arrows ---------- */
+.arw{position:relative;flex:none;height:2px;width:92px;background:var(--ink);align-self:center}
+.arw::after{content:"";position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+            border-left:13px solid var(--ink);border-top:8px solid transparent;
+            border-bottom:8px solid transparent}
+.arw.short{width:56px} .arw.long{width:140px}
+.arw.soft{background:var(--line)} .arw.soft::after{border-left-color:var(--line)}
+.arw.brand{background:var(--brand)} .arw.brand::after{border-left-color:var(--brand)}
+.arw.dn{width:2px;height:78px}
+.arw.dn::after{right:50%;top:auto;bottom:-1px;transform:translateX(50%);
+               border-left:8px solid transparent;border-right:8px solid transparent;
+               border-top:13px solid var(--ink);border-bottom:none}
+.arw.dn.soft::after{border-top-color:var(--line)}
+.arw.dn.brand::after{border-top-color:var(--brand)}
+/* dashed variant */
+.arw.dash{background:repeating-linear-gradient(90deg,var(--ink) 0 9px,transparent 9px 17px)}
+.arw.dn.dash{background:repeating-linear-gradient(180deg,var(--ink) 0 9px,transparent 9px 17px)}
+
+/* ---------- document / page object ---------- */
+.doc{width:238px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--lift);
+     padding:26px 24px;display:flex;flex-direction:column;gap:11px;flex:none}
+.doc.sm{width:180px;padding:20px 18px;gap:9px;border-radius:16px}
+/* display:block is load-bearing — a <span> bar inside a plain div is inline and drops its height.
+   It only "worked" in flex parents because flex items get blockified. */
+.ln{display:block;height:10px;border-radius:5px;background:var(--brand-soft)}
+.ln.head{height:14px;border-radius:7px;background:var(--brand);margin-bottom:8px}
+.ln.dark{background:var(--hair)}
+.doc-stack{position:relative;flex:none}
+.doc-stack .doc{position:absolute}
+
+/* ---------- browser / app window frame ---------- */
+.win{width:640px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;
+     overflow:hidden;box-shadow:var(--lift);flex:none}
+.win-bar{height:38px;background:#e7eaee;display:flex;align-items:center;gap:8px;padding:0 16px;
+         border-bottom:1.5px solid var(--line)}
+.win-bar i{width:11px;height:11px;border-radius:50%;background:#c3c9d2;display:block}
+.win-bar i:nth-child(1){background:#ff5f57}.win-bar i:nth-child(2){background:#febc2e}
+.win-bar i:nth-child(3){background:#28c840}
+.win-body{padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.phone{width:250px;height:500px;background:var(--surface);border:9px solid var(--ink);
+       border-radius:38px;overflow:hidden;flex:none;box-shadow:var(--lift)}
+
+/* ---------- panels (comparison) ---------- */
+.panel{background:var(--surface);border-radius:var(--r-lg);padding:32px 30px;flex:1;
+       box-shadow:var(--lift);display:flex;flex-direction:column;gap:16px}
+.panel.flat{box-shadow:none;border:1.5px solid var(--line)}
+.panel.win-side{border-top:5px solid var(--brand)}
+.panel-h{font-family:var(--font-head);font-weight:800;font-size:24px;letter-spacing:-.015em}
+.pair{display:flex;align-items:stretch;gap:40px;width:100%}
+
+/* ---------- rows: checks / crosses ---------- */
+.list{display:flex;flex-direction:column;gap:14px;width:100%}
+.item{display:flex;align-items:center;gap:14px;font-size:17px;line-height:1.35}
+.mark{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;
+      justify-content:center;font-size:14px;font-weight:800;font-family:var(--font-head)}
+.mark.y{background:var(--ok-soft);color:#027a48}
+.mark.n{background:var(--bad-soft);color:#b42318}
+.mark.q{background:var(--warn-soft);color:#b54708}
+
+/* ---------- bars ---------- */
+.bars{display:flex;flex-direction:column;gap:20px;width:100%}
+.bar-row{display:grid;grid-template-columns:200px 1fr auto;align-items:center;gap:22px}
+.bar-track{height:38px;border-radius:10px;background:var(--surface);overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:10px;background:var(--brand)}
+.bar-fill.a1{background:var(--a1)}.bar-fill.a3{background:var(--ok)}
+.bar-fill.a4{background:var(--warn)}.bar-fill.muted{background:var(--line)}
+.bar-lab{font-family:var(--font-head);font-weight:700;font-size:17px}
+.bar-val{font-family:var(--font-head);font-weight:800;font-size:19px;min-width:74px;text-align:right}
+
+/* vertical columns */
+.cols{display:flex;align-items:flex-end;gap:34px;height:100%}
+.col-b{width:88px;border-radius:12px 12px 0 0;background:var(--brand)}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:flex;gap:26px;width:100%}
+.tile{flex:1;background:var(--surface);border-radius:var(--r-lg);padding:30px 26px;
+      display:flex;flex-direction:column;gap:8px;box-shadow:var(--lift)}
+.tile .n{font-family:var(--font-head);font-weight:800;font-size:52px;letter-spacing:-.03em;
+         line-height:1;color:var(--brand)}
+.tile .l{font-size:16px;color:var(--muted);line-height:1.35}
+.tile.accent .n{color:var(--a1)}
+
+/* ---------- bands (funnel / layers / tiers) ---------- */
+.bands{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.band{background:var(--surface);border-radius:14px;padding:22px 28px;display:flex;
+      align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--lift)}
+.band .bt{font-family:var(--font-head);font-weight:700;font-size:20px}
+.band .bm{font-size:15px;color:var(--muted)}
+.layer{width:100%;border-radius:12px;padding:20px 26px;font-family:var(--font-head);
+       font-weight:700;font-size:19px}
+
+/* ---------- pills / chips ---------- */
+.pill{font-family:var(--font-head);font-weight:700;font-size:15px;border-radius:999px;
+      padding:10px 20px;display:inline-flex;align-items:center;gap:9px;background:var(--surface);
+      color:var(--ink);box-shadow:var(--lift)}
+.pill.brand{background:var(--brand);color:#fff;box-shadow:none}
+.pill.ok{background:var(--ok-soft);color:#027a48;box-shadow:none}
+.pill.warn{background:var(--warn-soft);color:#b54708;box-shadow:none}
+.pill.bad{background:var(--bad-soft);color:#b42318;box-shadow:none}
+.pill.out{background:transparent;border:1.5px solid var(--line);box-shadow:none}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* ---------- highlight (sentence-dissect template) ---------- */
+.hl{font-family:var(--font-mono);font-size:30px;padding:4px 10px;border-radius:5px;
+    display:inline-block;line-height:1.35}
+.hl.c1{background:var(--a3-soft)}.hl.c2{background:var(--a4-soft)}
+.hl.c3{background:var(--bad-soft)}.hl.c4{background:var(--a2-soft)}
+
+/* ---------- callout leader lines (anatomy template) ---------- */
+.callout{position:absolute;display:flex;align-items:center;gap:12px}
+.callout .ct{font-family:var(--font-head);font-weight:700;font-size:20px;white-space:nowrap}
+.leader{stroke:var(--muted);stroke-width:1.4;fill:none}
+
+/* ---------- misc ---------- */
+.grid{display:grid;gap:24px;width:100%}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.row{display:flex;align-items:center;gap:26px}
+.row.wide{justify-content:space-between;width:100%}
+.sep{width:100%;height:1.5px;background:var(--hair)}
+.svg-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}

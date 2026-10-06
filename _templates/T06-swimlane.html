@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T06 · swimlane</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T06 — who does what, and where the work changes hands. Use when the point is the HANDOFF
+     (the elbow connectors), not the sequence. 3 lanes max, 1-2 steps per lane. */
+  .sw{position:relative;width:1000px;height:380px}
+  .lane{position:absolute;left:0;right:0;height:104px;border-radius:14px;background:#e9ecf2}
+  .lane.l1{top:8px} .lane.l2{top:128px} .lane.l3{top:248px}
+  .who{position:absolute;left:20px;width:120px;font-family:var(--font-head);font-weight:800;
+       font-size:17px;color:var(--muted);line-height:1.2}
+  .chip-step{position:absolute;width:170px;background:var(--surface);border-radius:12px;
+             box-shadow:var(--lift);padding:16px 18px;font-family:var(--font-head);
+             font-weight:700;font-size:16.5px;line-height:1.25}
+  .chip-step small{display:block;font-family:var(--font-body);font-weight:600;font-size:13px;
+                   color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">Where it changes hands</div>
+
+    <div class="fill">
+      <div class="sw">
+        <div class="lane l1"></div><div class="lane l2"></div><div class="lane l3"></div>
+
+        <svg class="svg-layer" viewBox="0 0 1000 380" fill="none" stroke="#98a0b3" stroke-width="3.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <defs><marker id="s" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="#98a0b3" stroke="none"/></marker></defs>
+          <path d="M330 60 H372"            marker-end="url(#s)"/>
+          <path d="M550 60 H685 V158"       marker-end="url(#s)"/>
+          <path d="M770 180 H905 V278"      marker-end="url(#s)"/>
+        </svg>
+
+        <div class="who" style="top:36px">Front desk</div>
+        <div class="who" style="top:156px">Operations</div>
+        <div class="who" style="top:276px">Warehouse</div>
+
+        <div class="chip-step" style="left:160px;top:32px">First action<small>who starts it</small></div>
+        <div class="chip-step" style="left:380px;top:32px">Second action<small>same owner</small></div>
+        <div class="chip-step" style="left:600px;top:152px">Third action<small>handed over</small></div>
+        <div class="chip-step" style="left:820px;top:272px">Last action<small>handed over again</small></div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

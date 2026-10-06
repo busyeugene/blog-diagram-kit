@@ -1,0 +1,61 @@
+/* ============================================================
+   BRAND — <YOUR BRAND>  (<yourdomain.com>)
+   Copy to <Brand>/brand.css and fill in. Load BEFORE _system/base.css.
+   Source every value from your LIVE website css, not from a screenshot or a brand PDF.
+   See _system/ONBOARDING.md for how to find them.
+   ============================================================ */
+
+/* Webfonts. If your fonts are on Google Fonts, paste the import here and load only the weights we
+   actually use (heads 700/800, body 400/600) — extra weights just slow the render.
+   If your fonts are self-hosted and licensed, see the "self-hosted fonts" gotcha in ONBOARDING.md. */
+@import url('https://fonts.googleapis.com/css2?family=REPLACE:wght@500;600;700;800&family=REPLACE:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  /* ---- core -------------------------------------------------------------
+     --brand is the one the CTA button uses. Do NOT take it from the frequency
+     scan; confirm it by eye (ONBOARDING.md, step 2). */
+  --brand:#0000ff;            /* primary */
+  --brand-2:#000000;          /* secondary / accent, often the gradient's other end */
+  --brand-soft:#e6e6ff;       /* tint of --brand for chips and fills */
+  --brand-dark:#000080;       /* the navy/deep variant used on dark surfaces */
+  --grad-brand:linear-gradient(135deg,#000000,#0000ff);  /* the signature gradient, if they have one */
+
+  /* ---- ink and surfaces -------------------------------------------------
+     These are the flat-explainer canvas, not necessarily your website's
+     background. Keep the canvas light and low-chroma unless the brand is dark
+     (for a dark brand, start from _system/brand-dark-example.css instead). */
+  --ink:#101828; --muted:#667085; --line:#d0d5dd; --hair:#eaecf0;
+  --canvas:#f2f4f7; --surface:#ffffff;
+
+  /* ---- semantics --------------------------------------------------------
+     Only used where they encode meaning (good/bad, pass/fail). Safe to keep as-is
+     unless the brand has its own success/warning colours. */
+  --ok:#12b76a; --ok-soft:#d1fadf;
+  --warn:#f79009; --warn-soft:#fef0c7;
+  --bad:#f04438; --bad-soft:#fee4e2;
+
+  /* ---- categorical accents ----------------------------------------------
+     Used in order for things that are merely DIFFERENT, not better or worse
+     (icon grids, cycle nodes, callouts). Derive from the brand where you can. */
+  --a1:#6941c6; --a2:#3b5bdb; --a3:#12b76a; --a4:#f79009; --a5:#ee46bc;
+  --a1-soft:#ece4ff; --a2-soft:#dfe5fb; --a3-soft:#d6f7e6; --a4-soft:#fdeecd; --a5-soft:#fbe3f4;
+
+  /* ---- type -------------------------------------------------------------
+     --font-head carries every heading and label; --font-body the running copy. */
+  --font-head:'REPLACE',sans-serif;
+  --font-body:'REPLACE',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+
+  /* ---- compatibility aliases -------------------------------------------
+     DO NOT DELETE. An undefined CSS var in an SVG `stroke` fails SILENTLY: the path
+     does not paint and only the marker shows, which reads as a rendering bug rather
+     than a missing token. They also keep older scenes working if a token is renamed.
+  --green:var(--ok);   --green-bg:#d1fadf; --green-bd:#a6f4c5;
+  --amber:var(--warn); --amber-bg:#fef0c7;
+  --red:var(--bad);    --red-bg:#fee4e2;
+  --accent:var(--brand); --violet:var(--brand-2);
+  --blue-700:var(--brand-dark); --blue-50:#eef8ff; --blue-100:#d5eaf6;
+  --blue-300:#8fd3f8; --blue-400:#5ec2f5;
+  --slate-700:#344054; --slate-600:#475467; --slate-400:#98a2b3;
+  --border:var(--hair); --soft:#f9fafb; --surface-2:#f6f8fb;
+}

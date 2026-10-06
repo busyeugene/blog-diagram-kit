@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T35 · stacked-share</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T35 - one whole split into its shares, with a bracket over the combined ones that matter most.
+     Use when a table already lists the percentages and the missing insight is the CUMULATIVE
+     picture - how little is left once the big ones are taken out.
+     Segment widths ARE the percentages and must sum to 100. State the whole in real money
+     underneath so the shares stop being abstract.
+     THREE SIZES ONLY: --fs-xl (headline + remainder), --fs-md (segment labels), --fs-sm (rest). */
+  .wrap100{width:100%;display:flex;flex-direction:column;align-items:center}
+  .brk{height:22px;border:3px solid var(--ink);border-bottom:none;border-radius:10px 10px 0 0;
+       margin-bottom:8px}
+  .brklab{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--ink);
+          margin-bottom:10px}
+  .bar100{display:flex;width:100%;height:118px;border-radius:14px;overflow:hidden;box-shadow:var(--lift)}
+  .seg{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+       padding:0 10px;text-align:center;color:#fff}
+  .seg .pc{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);line-height:1}
+  .seg .nm{font-size:var(--fs-sm);line-height:1.25;opacity:.95}
+  .seg.left{color:var(--ink)} .seg.left .nm{color:var(--muted);opacity:1}
+  .money{display:flex;width:100%;margin-top:12px}
+  .money span{font-size:var(--fs-sm);color:var(--muted);text-align:center}
+  .note10{font-size:var(--fs-sm);color:var(--ink);text-align:center;margin-top:34px;line-height:1.55;max-width:900px}
+  .note10 b{font-family:var(--font-head);font-weight:800}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">Where the whole thing actually goes</div>
+
+    <div class="fill col" style="gap:0">
+      <div class="wrap100">
+        <!-- bracket spans the first two segments: 32 + 36.5 = 68.5% -->
+        <div class="brk" style="width:68.5%;margin-right:31.5%;align-self:flex-start"></div>
+        <div class="brklab" style="align-self:flex-start">The two that dominate &mdash; 68.5%</div>
+
+        <div class="bar100">
+          <div class="seg" style="width:32%;background:var(--brand)">
+            <span class="pc">32%</span><span class="nm">Biggest share</span></div>
+          <div class="seg" style="width:36.5%;background:var(--brand-2)">
+            <span class="pc">36.5%</span><span class="nm">Second share</span></div>
+          <div class="seg" style="width:8%;background:var(--a4)">
+            <span class="pc">8%</span><span class="nm">Third</span></div>
+          <div class="seg" style="width:12%;background:var(--a5)">
+            <span class="pc">12%</span><span class="nm">Fourth</span></div>
+          <div class="seg left" style="width:11.5%;background:#e4e7ee">
+            <span class="pc">11.5%</span><span class="nm">what is left</span></div>
+        </div>
+
+        <div class="money">
+          <span style="width:32%">$32,000</span><span style="width:36.5%">$36,500</span>
+          <span style="width:8%">$8,000</span><span style="width:12%">$12,000</span>
+          <span style="width:11.5%">$11,500</span>
+        </div>
+
+        <div class="note10">Name what still has to come out of that remainder &mdash;
+          <b>that is the number the reader came for.</b></div>
+      </div>
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

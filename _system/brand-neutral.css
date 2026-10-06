@@ -1,0 +1,20 @@
+/* ============================================================
+   BRAND — NEUTRAL (template-library gallery only)
+   Deliberately unbranded so the template shapes read as structure,
+   not as any brand's design. Never use for real deliverables —
+   copy brand-template.css into <Brand>/brand.css instead.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --brand:#3b5bdb; --brand-2:#7048e8; --brand-soft:#dfe5fb;
+  --grad-brand:linear-gradient(135deg,#7048e8,#3b5bdb);
+  --ink:#12151c; --muted:#697084; --line:#ced3de; --hair:#e8eaf0;
+  --canvas:#f2f4f7; --surface:#ffffff;
+  --ok:#0ca678; --ok-soft:#d3f9ee; --warn:#f08c00; --warn-soft:#fff3bf;
+  --bad:#e03131; --bad-soft:#ffe3e3;
+  --a1:#7048e8; --a2:#3b5bdb; --a3:#0ca678; --a4:#f08c00; --a5:#d6336c;
+  --a1-soft:#e8e0fd; --a2-soft:#dfe5fb; --a3-soft:#d3f9ee; --a4-soft:#fff3bf; --a5-soft:#ffdeeb;
+  --font-head:'Inter',sans-serif; --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}

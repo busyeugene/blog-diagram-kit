@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T34 · converge-diverge</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T34 - several inputs converge on one thing, which then drives several outputs. Use when the
+     argument is "this one thing is load-bearing" - it is worth getting right precisely because so
+     much hangs off it. Different from T23 hub-spoke, which has no direction.
+
+     CONNECTOR GEOMETRY: both columns must be the SAME total height as their svg, or the arrows
+     drift. Left = 4 rows x 84 + 3 gaps x 16 = 384 (centres 42/142/242/342).
+     Right = 3 rows x 108 + 2 gaps x 30 = 384 (centres 54/192/330). Both svgs are 384 tall.
+     THREE SIZES ONLY: --fs-xl (headline), --fs-md (hub + outputs), --fs-sm (input chips). */
+  .cd{display:flex;align-items:center;gap:0}
+  .sigs{display:flex;flex-direction:column;gap:16px}
+  .sig{height:84px;width:230px;background:var(--surface);border-radius:12px;box-shadow:var(--lift);
+       display:flex;align-items:center;gap:14px;padding:0 18px}
+  .sig .si{width:44px;height:44px;border-radius:10px;flex:none}
+  .sig .st2{font-family:var(--font-head);font-weight:700;font-size:var(--fs-sm);line-height:1.25}
+  .sig .sx{display:block;font-family:var(--font-body);font-weight:600;color:var(--muted);margin-top:2px}
+  .lfan,.rfan{width:120px;height:384px;flex:none}
+  .hub2{width:184px;height:184px;flex:none;border-radius:50%;background:var(--grad-brand);color:#fff;
+        display:flex;align-items:center;justify-content:center;text-align:center;
+        font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);line-height:1.25;padding:0 24px}
+  .outs2{display:flex;flex-direction:column;gap:30px}
+  .out4{height:108px;width:250px;background:var(--surface);border-radius:12px;box-shadow:var(--lift);
+        display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 20px}
+  .out4 .ot{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);line-height:1.2}
+  .out4 .od{font-size:var(--fs-sm);color:var(--muted);line-height:1.35}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">Four in, three out</div>
+
+    <div class="fill">
+      <div class="cd">
+        <div class="sigs">
+          <div class="sig"><span class="si" style="background:var(--a1-soft)"></span>
+            <span class="st2">First input<span class="sx">where it comes from</span></span></div>
+          <div class="sig"><span class="si" style="background:var(--a2-soft)"></span>
+            <span class="st2">Second input<span class="sx">where it comes from</span></span></div>
+          <div class="sig"><span class="si" style="background:var(--a4-soft)"></span>
+            <span class="st2">Third input<span class="sx">where it comes from</span></span></div>
+          <div class="sig"><span class="si" style="background:var(--a3-soft)"></span>
+            <span class="st2">Fourth input<span class="sx">where it comes from</span></span></div>
+        </div>
+
+        <svg class="lfan" viewBox="0 0 120 384" fill="none" stroke="var(--line)" stroke-width="3.5"
+             stroke-linecap="round">
+          <defs><marker id="i" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="#ced3de" stroke="none"/></marker></defs>
+          <path d="M4 42  C 56 42,  60 192, 112 192" marker-end="url(#i)"/>
+          <path d="M4 142 C 56 142, 60 192, 112 192" marker-end="url(#i)"/>
+          <path d="M4 242 C 56 242, 60 192, 112 192" marker-end="url(#i)"/>
+          <path d="M4 342 C 56 342, 60 192, 112 192" marker-end="url(#i)"/>
+        </svg>
+
+        <div class="hub2">The thing<br>it all feeds</div>
+
+        <svg class="rfan" viewBox="0 0 120 384" fill="none" stroke="var(--line)" stroke-width="3.5"
+             stroke-linecap="round">
+          <path d="M4 192 C 56 192, 60 54,  112 54"  marker-end="url(#i)"/>
+          <path d="M4 192 H 112"                     marker-end="url(#i)"/>
+          <path d="M4 192 C 56 192, 60 330, 112 330" marker-end="url(#i)"/>
+        </svg>
+
+        <div class="outs2">
+          <div class="out4"><span class="ot">First decision</span><span class="od">what it lets you do</span></div>
+          <div class="out4"><span class="ot">Second decision</span><span class="od">what it lets you do</span></div>
+          <div class="out4"><span class="ot">Third decision</span><span class="od">what it lets you do</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

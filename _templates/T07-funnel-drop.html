@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T07 · funnel-drop</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T07 — volume shrinking step by step. Band WIDTH must be proportional to the number on it,
+     and the loss between bands is called out beside the gap. 4 bands. */
+  .fn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:14px;width:100%}
+  .fb{display:flex;align-items:center;justify-content:space-between;gap:16px;
+      border-radius:14px;padding:24px 30px;color:#fff}
+  .fb .ft{font-family:var(--font-head);font-weight:700;font-size:21px}
+  .fb .fn-n{font-family:var(--font-head);font-weight:800;font-size:27px;letter-spacing:-.02em}
+  .drop{display:flex;align-items:center;gap:9px;font-family:var(--font-head);font-weight:700;
+        font-size:16px;color:var(--bad)}
+  .drop i{width:34px;height:2px;background:#f0a9a9;display:block}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top">
+    <div class="t-title">Where it leaks</div>
+
+    <div class="fn">
+      <!-- widths are the counts as a % of the top band: 1000 / 780 / 460 / 310 -->
+      <div class="fb" style="width:100%;background:var(--a1)"><span class="ft">Stage one</span><span class="fn-n">1,000</span></div>
+      <span class="drop"><i></i>− 22%<i></i></span>
+      <div class="fb" style="width:78%;background:var(--a2)"><span class="ft">Stage two</span><span class="fn-n">780</span></div>
+      <span class="drop"><i></i>− 41%<i></i></span>
+      <div class="fb" style="width:46%;background:#4c8fdb"><span class="ft">Stage three</span><span class="fn-n">460</span></div>
+      <span class="drop"><i></i>− 33%<i></i></span>
+      <div class="fb" style="width:31%;background:var(--ok);padding:24px 22px"><span class="ft" style="font-size:18px">Done</span><span class="fn-n" style="font-size:23px">310</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T02 · flow-branch</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T02 — one source fans out to 3 destinations (channels, owners, outcomes).
+     Flip the arrowheads and it reads as a merge instead. */
+  .br{display:flex;align-items:center;gap:0}
+  .br .src{display:flex;flex-direction:column;align-items:center;gap:16px;width:210px}
+  /* CONNECTOR GEOMETRY — arrows must land on the CENTRE of the shape they point at.
+     Give every destination row a FIXED height, then size the svg to the column's real height and
+     read the endpoints off that. Column = 3 rows x 96 + 2 gaps x 34 = 356. Row centres: 48/178/308.
+     If the svg height and the column height disagree, the svg gets centred against the column and
+     every arrow drifts off its target. */
+  .br .fan{width:210px;height:356px;flex:none}
+  .dsts{display:flex;flex-direction:column;gap:34px}
+  .dst{display:flex;align-items:center;gap:20px;height:96px}
+  .dst .lab{text-align:left;font-size:20px}
+  .dst .cap{text-align:left;margin-top:2px;font-size:15px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title">One in, three out</div>
+
+    <div class="fill">
+      <div class="br">
+        <div class="src">
+          <div class="node lg fill"><span class="glyph">1</span></div>
+          <div class="lab">The single source</div>
+        </div>
+
+        <svg class="fan" viewBox="0 0 210 356" fill="none" stroke="var(--line)" stroke-width="4"
+             stroke-linecap="round">
+          <defs><marker id="a" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="#ced3de" stroke="none"/></marker></defs>
+          <path d="M6 178 C 90 178, 100 48, 200 48"   marker-end="url(#a)"/>
+          <path d="M6 178 H 200"                      marker-end="url(#a)"/>
+          <path d="M6 178 C 90 178, 100 308, 200 308" marker-end="url(#a)"/>
+        </svg>
+
+        <div class="dsts">
+          <div class="dst"><div class="node sm a1"><span class="glyph" style="font-size:24px">A</span></div>
+            <div><div class="lab">First branch</div><div class="cap">where it goes</div></div></div>
+          <div class="dst"><div class="node sm a2"><span class="glyph" style="font-size:24px">B</span></div>
+            <div><div class="lab">Second branch</div><div class="cap">where it goes</div></div></div>
+          <div class="dst"><div class="node sm a3"><span class="glyph" style="font-size:24px">C</span></div>
+            <div><div class="lab">Third branch</div><div class="cap">where it goes</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

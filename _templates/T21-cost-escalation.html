@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T21 · cost-escalation</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T21 — the same mistake getting more expensive the later you catch it. Rising steps + a
+     colour ramp from calm to alarm. This is the "catch it early" argument in one picture. */
+  .esc{display:flex;align-items:flex-end;gap:22px;height:400px;width:100%}
+  .step{flex:1;display:flex;flex-direction:column;align-items:center;gap:0}
+  .step .cost{font-family:var(--font-head);font-weight:800;font-size:34px;letter-spacing:-.025em;
+              margin-bottom:12px}
+  .step .blk{width:100%;border-radius:14px 14px 0 0}
+  .step .wl{font-family:var(--font-head);font-weight:700;font-size:18px;margin-top:16px;text-align:center}
+  .step .wd{font-size:14.5px;color:var(--muted);margin-top:4px;text-align:center;line-height:1.35}
+  .base{width:100%;height:4px;background:var(--line);border-radius:2px;margin-top:0}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title">The later you catch it, the more it costs</div>
+
+    <div class="fill col" style="justify-content:flex-end">
+      <div class="esc">
+        <div class="step"><span class="cost" style="color:var(--ok)">$1</span>
+          <span class="blk" style="height:60px;background:var(--a3-soft)"></span></div>
+        <div class="step"><span class="cost" style="color:#7cb305">$9</span>
+          <span class="blk" style="height:120px;background:#e3f2c4"></span></div>
+        <div class="step"><span class="cost" style="color:var(--warn)">$40</span>
+          <span class="blk" style="height:210px;background:var(--a4-soft)"></span></div>
+        <div class="step"><span class="cost" style="color:var(--bad)">$180</span>
+          <span class="blk" style="height:300px;background:var(--bad-soft)"></span></div>
+      </div>
+      <div class="base"></div>
+      <div class="esc" style="height:auto;align-items:flex-start;margin-top:2px">
+        <div class="step"><span class="wl">Caught here</span><span class="wd">a correction</span></div>
+        <div class="step"><span class="wl">One stage later</span><span class="wd">rework</span></div>
+        <div class="step"><span class="wl">Two stages later</span><span class="wd">a redo and a delay</span></div>
+        <div class="step"><span class="wl">At the customer</span><span class="wd">refund, reship, churn</span></div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

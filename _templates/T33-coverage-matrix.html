@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T33 · coverage-matrix</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T33 - categories down the side, filled slots across, and what the redundancy buys you on the
+     right. Use for supplier coverage, channel coverage, staffing cover, backup systems - anywhere
+     the ARGUMENT is "more than one of these, and here is why". Keep slots unnamed unless the article
+     actually names them; the point is structural, not a recommendation.
+     THREE SIZES ONLY: --fs-xl (headline), --fs-md (category + benefit names), --fs-sm (detail). */
+  .mx{display:flex;gap:44px;width:100%;align-items:center}
+  .cats{flex:1;display:flex;flex-direction:column;gap:18px}
+  .catrow{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:20px}
+  .catname{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);text-align:right}
+  .slots{display:flex;gap:12px}
+  .slot{flex:1;height:64px;border-radius:12px;background:var(--surface);box-shadow:var(--lift);
+        display:flex;align-items:center;justify-content:center;font-family:var(--font-head);
+        font-weight:800;font-size:var(--fs-sm);color:var(--brand)}
+  .slot.solo{background:var(--warn-soft);color:#b54708;box-shadow:none}
+  .buys{width:330px;flex:none;display:flex;flex-direction:column;gap:16px}
+  .buy{display:flex;align-items:flex-start;gap:12px}
+  .buy .bi{width:30px;height:30px;border-radius:50%;background:var(--ok-soft);color:#0b6b4f;
+           flex:none;display:flex;align-items:center;justify-content:center;
+           font-family:var(--font-head);font-weight:800;font-size:var(--fs-sm)}
+  .buy .bt{font-family:var(--font-head);font-weight:700;font-size:var(--fs-md);line-height:1.2}
+  .buy .bd{font-size:var(--fs-sm);color:var(--muted);margin-top:3px;line-height:1.35}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">More than one of each, and what that buys you</div>
+
+    <div class="fill">
+      <div class="mx">
+        <div class="cats">
+          <div class="catrow"><span class="catname">Category A</span>
+            <span class="slots"><span class="slot">Slot 1</span><span class="slot">Slot 2</span><span class="slot">Slot 3</span></span></div>
+          <div class="catrow"><span class="catname">Category B</span>
+            <span class="slots"><span class="slot">Slot 1</span><span class="slot">Slot 2</span></span></div>
+          <div class="catrow"><span class="catname">Category C</span>
+            <span class="slots"><span class="slot">Slot 1</span><span class="slot">Slot 2</span><span class="slot">Slot 3</span></span></div>
+          <div class="catrow"><span class="catname">The exception</span>
+            <span class="slots"><span class="slot solo">Only one option &mdash; a known single point of failure</span></span></div>
+        </div>
+
+        <div class="buys">
+          <div class="buy"><span class="bi">1</span><div><div class="bt">First benefit</div>
+            <div class="bd">what having a second one gets you</div></div></div>
+          <div class="buy"><span class="bi">2</span><div><div class="bt">Second benefit</div>
+            <div class="bd">what it protects you from</div></div></div>
+          <div class="buy"><span class="bi">3</span><div><div class="bt">Third benefit</div>
+            <div class="bd">the leverage it creates</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

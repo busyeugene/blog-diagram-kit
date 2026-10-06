@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T12 · tier-ladder</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T12 — maturity levels the reader can locate themselves on. Each rung states what you can DO
+     at that level, not just its name. 3 rungs, bottom = today, top = the goal. */
+  .ld{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;width:100%}
+  .rung{border-radius:18px;padding:28px 30px;display:flex;align-items:flex-start;gap:20px;
+        background:var(--surface);box-shadow:var(--lift)}
+  .rung .rn{font-family:var(--font-head);font-weight:800;font-size:25px;letter-spacing:-.015em}
+  .rung .rd{font-size:17px;color:var(--muted);line-height:1.4;margin-top:6px}
+  .r3{margin-left:0;   border-left:7px solid var(--ok)}
+  .r2{margin-left:56px;border-left:7px solid var(--a2)}
+  .r1{margin-left:112px;border-left:7px solid var(--line)}
+  .rt{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--muted)}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top">
+    <div class="t-title">Three levels</div>
+
+    <div class="ld">
+      <span class="rt">Where you want to be</span>
+      <div class="rung r3"><span class="num" style="background:var(--ok)">3</span>
+        <div><div class="rn">Top level</div><div class="rd">What becomes possible once you get here.</div></div></div>
+
+      <div class="rung r2"><span class="num" style="background:var(--a2)">2</span>
+        <div><div class="rn">Middle level</div><div class="rd">The common halfway state, and the ceiling it runs into.</div></div></div>
+
+      <div class="rung r1"><span class="num" style="background:var(--muted)">1</span>
+        <div><div class="rn">Starting level</div><div class="rd">What it looks like before any of this is fixed.</div></div></div>
+      <span class="rt" style="margin-left:112px">Where most start</span>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

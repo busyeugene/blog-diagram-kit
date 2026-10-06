@@ -1,0 +1,103 @@
+/* ============================================================
+   BRAND — DARK-CANVAS EXAMPLE  (fictional palette)
+   Start here instead of brand-template.css when your diagrams should sit on a DARK canvas.
+   Copy to <Brand>/brand.css, then replace every value with your own. Load BEFORE base.css.
+
+   base.css is written for a LIGHT canvas. A dark brand is more work than swapping two tokens:
+   the tokens below invert the surfaces, and the DARK-CANVAS TUNING block at the bottom fixes
+   the handful of places where base.css assumes light. Keep that block.
+
+   Decide light vs dark on ONE render before authoring a full article. Note that a site whose
+   homepage is dark may still have a light blog body; follow what the diagrams will sit next to.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  /* ---- core -------------------------------------------------------------
+     On dark, --brand is usually the LIGHT accent the site uses on its dark sections
+     (button fill, eyebrows). If it is light, text ON it must be dark - see tuning rule 1. */
+  --brand:#5ce1e6;            /* light accent on dark surfaces */
+  --brand-2:#1f8fff;          /* the calmer secondary */
+  --brand-soft:#0f3a4a;       /* --brand at ~14% over the canvas, as a solid */
+  --brand-dark:#071a2e;       /* the gradient's dark stop - DARKER than the canvas: never paint a shape with it */
+  --grad-brand:linear-gradient(135deg,#5ce1e6,#1f8fff);
+
+  /* ---- ink and surfaces (inverted) -------------------------------------- */
+  --ink:#ffffff; --muted:#b4c2d6; --subtle:#6f83a0;
+  --line:#1c3352; --hair:#142a44;
+  --canvas:#0a1a2f; --surface:#10284a;
+
+  /* a dark drop-shadow does almost nothing on a dark canvas; depth comes from the hairline below */
+  --lift:0 18px 34px -20px rgba(0,0,0,.7);
+
+  /* ---- semantics: lightened so they read on navy ------------------------ */
+  --ok:#3ddc97;   --ok-soft:#0c3a30;
+  --warn:#f5b544; --warn-soft:#3a2c0e;
+  --bad:#ff6b8a;  --bad-soft:#3d1220;
+
+  /* ---- categorical accents --------------------------------------------- */
+  --a1:#5ce1e6; --a2:#1f8fff; --a3:#3ddc97; --a4:#f5b544; --a5:#c77dff;
+  --a1-soft:#0f3a4a; --a2-soft:#0b2a4a; --a3-soft:#0c3a30; --a4-soft:#3a2c0e; --a5-soft:#2a1440;
+
+  /* ---- type ------------------------------------------------------------ */
+  --font-head:'Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+
+  /* ---- compatibility aliases - DO NOT DELETE ----------------------------
+     An undefined CSS var in an SVG `stroke` fails SILENTLY. The blue-* ramp is
+     mapped onto the dark palette so nothing reaches for a light-canvas blue. */
+  --green:var(--ok);   --green-bg:#0c3a30; --green-bd:#1f6b52;
+  --amber:var(--warn); --amber-bg:#3a2c0e;
+  --red:var(--bad);    --red-bg:#3d1220;
+  --accent:var(--brand); --violet:var(--a5);
+  --blue-700:#0b2a4a; --blue-50:#0f3a4a; --blue-100:#123f57;
+  --blue-300:#1f8fff; --blue-400:#5ce1e6;
+  --slate-700:#b4c2d6; --slate-600:#6f83a0; --slate-400:#4a637f;
+  --border:var(--line); --soft:#071a2e; --surface-2:#071a2e;
+}
+
+/* ============================================================
+   DARK-CANVAS TUNING
+   Scoped `body ...` on purpose: brand.css loads BEFORE base.css, so a bare selector here
+   would lose the cascade at equal specificity. The extra element wins regardless of load
+   order. This is the one place a brand file may set more than tokens.
+   ============================================================ */
+
+/* 1. Text on a LIGHT brand fill goes dark, never white. (Delete if your --brand is dark.) */
+body .node.fill,
+body .node.grad,
+body .num,
+body .pill.brand{color:#0a1a2f}
+
+/* 2. Depth on dark comes from a card hairline, not a shadow. */
+body .panel,
+body .tile,
+body .doc,
+body .band,
+body .win,
+body .bar-track{border:1px solid rgba(31,143,255,.18)}
+body .panel.flat{border:1px solid var(--line);box-shadow:none}
+body .win-bar{background:#071a2e;border-bottom-color:var(--line)}
+body .win-bar i{background:#2a3f5c}
+
+/* 3. base.css hard-codes dark text on the semantic tints (fine on white, invisible on navy). */
+body .mark.y,body .pill.ok{color:var(--ok)}
+body .mark.n,body .pill.bad{color:var(--bad)}
+body .mark.q,body .pill.warn{color:var(--warn)}
+body .pill{background:var(--surface);color:var(--ink);border:1px solid rgba(31,143,255,.18)}
+body .pill.ok{background:var(--ok-soft);border-color:transparent}
+body .pill.warn{background:var(--warn-soft);border-color:transparent}
+body .pill.bad{background:var(--bad-soft);border-color:transparent}
+body .pill.brand{background:var(--brand);border-color:transparent}
+body .pill.out{background:transparent;border:1.5px solid var(--line)}
+
+/* 4. Weight ceiling. base.css asks for 800 on display elements. If your site never goes
+      above 700, cap it here or the diagrams read heavier than your own pages. */
+body .t-title,
+body .panel-h,
+body .tile .n,
+body .num,
+body .bar-val,
+body .node .glyph{font-weight:700}

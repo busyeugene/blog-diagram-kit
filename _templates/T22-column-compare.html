@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T22 · column-compare</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T22 — two series across the same 4 categories. Only reach for this when the SHAPE of the
+     difference is the point; a single series belongs in T18 instead. */
+  .cc{display:flex;align-items:flex-end;justify-content:space-around;height:360px;width:100%;
+      border-bottom:3px solid var(--line);padding-bottom:0}
+  .grp{display:flex;align-items:flex-end;gap:10px;position:relative;height:100%}
+  .cb{width:62px;border-radius:9px 9px 0 0;position:relative;display:flex;justify-content:center}
+  .cb b{position:absolute;top:-30px;font-family:var(--font-head);font-weight:800;font-size:17px}
+  .cx{position:absolute;bottom:-42px;left:0;right:0;text-align:center;font-family:var(--font-head);
+      font-weight:700;font-size:16px;color:var(--muted)}
+  .lg{display:flex;gap:26px;align-items:center;margin-top:56px}
+  .lg span{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600}
+  .lg i{width:16px;height:16px;border-radius:4px;display:block}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">Two ways of doing it, measured the same way</div>
+
+    <div class="fill col" style="justify-content:flex-end">
+      <div class="cc">
+        <div class="grp"><span class="cb" style="height:56%;background:var(--line)"><b>4.2</b></span>
+          <span class="cb" style="height:88%;background:var(--brand)"><b>6.6</b></span><span class="cx">First</span></div>
+        <div class="grp"><span class="cb" style="height:41%;background:var(--line)"><b>3.1</b></span>
+          <span class="cb" style="height:73%;background:var(--brand)"><b>5.5</b></span><span class="cx">Second</span></div>
+        <div class="grp"><span class="cb" style="height:64%;background:var(--line)"><b>4.8</b></span>
+          <span class="cb" style="height:59%;background:var(--brand)"><b>4.4</b></span><span class="cx">Third</span></div>
+        <div class="grp"><span class="cb" style="height:29%;background:var(--line)"><b>2.2</b></span>
+          <span class="cb" style="height:92%;background:var(--brand)"><b>6.9</b></span><span class="cx">Fourth</span></div>
+      </div>
+      <div class="lg"><span><i style="background:var(--line)"></i>The old way</span>
+        <span><i style="background:var(--brand)"></i>The new way</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

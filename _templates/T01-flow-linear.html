@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T01 · flow-linear</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T01 — input travels through a transform and comes out changed. 3 stops, never more than 4. */
+  .fl{grid-template-columns:238px 100px 190px 100px 238px}
+  .fl .lab{max-width:238px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title">How it moves</div>
+
+    <div class="fill">
+      <div class="fgrid fl">
+        <!-- row 1: the shapes -->
+        <div class="doc"><span class="ln head"></span><span class="ln"></span><span class="ln"></span>
+          <span class="ln" style="width:70%"></span><span class="ln"></span></div>
+        <span class="arw"></span>
+        <div class="node lg grad">
+          <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <span class="arw"></span>
+        <div class="doc"><span class="ln head" style="background:var(--a3)"></span>
+          <span class="ln" style="background:var(--a3-soft)"></span>
+          <span class="ln" style="background:var(--a3-soft);width:80%"></span>
+          <span class="ln" style="background:var(--a3-soft)"></span>
+          <span class="ln" style="background:var(--a3-soft);width:55%"></span></div>
+
+        <!-- row 2: the labels (empty cells sit under the arrows) -->
+        <div><div class="lab">Raw input</div><div class="cap">What you start with</div></div>
+        <div></div>
+        <div><div class="lab">The step that<br>changes it</div></div>
+        <div></div>
+        <div><div class="lab">Usable output</div><div class="cap">What you end up with</div></div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

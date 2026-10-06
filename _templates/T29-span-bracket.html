@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T29 · span-bracket</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T29 — "the term you think means the whole thing only covers this part of it". A wide bracket
+     over every step, a narrow bracket under the one or two the narrower term actually names.
+     Built for the order-management-workflow article; use it for any is-broader-than definition.
+
+     column-gap MUST be 0 — the arrow columns are the gap, and the bracket offsets below are
+     computed from a 150+46 pitch. base.css .fgrid defaults to 30px and would shift everything. */
+  .wrap{position:relative;width:934px;padding:74px 0 92px}
+  .grid5{grid-template-columns:150px 46px 150px 46px 150px 46px 150px 46px 150px;
+         column-gap:0;row-gap:16px}
+  .grid5 .node{width:84px;height:84px}
+  .grid5 .glyph{font-size:27px}
+  .grid5 .lab{font-size:16px;line-height:1.24}
+  .grid5 .arw{width:46px;height:2px}
+
+  .brk{position:absolute;border:3px solid var(--ink);border-bottom:none;height:20px;
+       border-radius:8px 8px 0 0}
+  .brk-lab{position:absolute;font-family:var(--font-head);font-weight:800;font-size:21px;
+           color:var(--ink);letter-spacing:-.01em;text-align:center}
+  .brk2{position:absolute;border:3px solid var(--brand);border-top:none;height:20px;
+        border-radius:0 0 8px 8px}
+  .brk2-lab{position:absolute;font-family:var(--font-head);font-weight:800;font-size:19px;
+            color:var(--brand);text-align:center;line-height:1.3}
+  .brk2-lab small{display:block;font-family:var(--font-body);font-weight:600;font-size:14.5px;
+                  color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="wrap">
+
+      <div class="brk" style="left:0;top:44px;width:934px"></div>
+      <div class="brk-lab" style="left:0;top:6px;width:934px">The broad term</div>
+
+      <div class="fgrid grid5">
+        <div class="node sm a1"><span class="glyph">1</span></div>
+        <span class="arw soft"></span>
+        <div class="node sm a2"><span class="glyph">2</span></div>
+        <span class="arw soft"></span>
+        <div class="node sm a2"><span class="glyph">3</span></div>
+        <span class="arw soft"></span>
+        <div class="node sm fill"><span class="glyph">4</span></div>
+        <span class="arw soft"></span>
+        <div class="node sm a3"><span class="glyph">5</span></div>
+
+        <div class="lab">First step</div><div></div>
+        <div class="lab">Second step</div><div></div>
+        <div class="lab">Third step</div><div></div>
+        <div class="lab">Fourth step</div><div></div>
+        <div class="lab">Fifth step</div>
+      </div>
+
+      <!-- narrow bracket: left = 3 * (150+46) for the 4th column; widen to span two steps -->
+      <div class="brk2" style="left:588px;top:274px;width:150px"></div>
+      <div class="brk2-lab" style="left:518px;top:302px;width:290px">The narrower term
+        <small>what it actually covers — one step of five</small></div>
+
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

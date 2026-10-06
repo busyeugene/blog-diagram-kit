@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T14 · annotated-screen</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T14 — point at ONE region of a screen and say what is happening there. The dashed box plus
+     the curved arrow is the whole idea; never annotate two regions in the same image. */
+  .sc{position:relative;width:1000px;height:520px}
+  .sc .win{position:absolute;left:0;top:0;width:760px;height:520px}
+  .sc .win-body{gap:20px;padding:28px 30px}
+  .blk{display:flex;flex-direction:column;gap:9px}
+  .blk .ln.t{background:var(--a1-soft);height:15px;width:52%;border-radius:7px}
+  .blk .ln{background:var(--hair)}
+  .zone{position:absolute;left:250px;top:76px;width:466px;height:112px;border-radius:12px;
+        border:3px dashed var(--a4);background:rgba(240,140,0,.05)}
+  .noteb{position:absolute;left:790px;top:118px;width:210px}
+  .noteb .nt{font-family:var(--font-head);font-weight:800;font-size:21px;line-height:1.25}
+  .noteb .nd{font-size:15.5px;color:var(--muted);line-height:1.4;margin-top:7px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="sc">
+      <div class="win">
+        <div class="win-bar"><i></i><i></i><i></i></div>
+        <div class="win-body">
+          <div style="height:34px;border-radius:999px;background:var(--hair);width:100%"></div>
+          <div style="height:112px"></div>
+          <div class="blk"><span class="ln t"></span><span class="ln"></span><span class="ln" style="width:78%"></span></div>
+          <div class="blk"><span class="ln t" style="width:64%"></span><span class="ln"></span><span class="ln" style="width:70%"></span></div>
+          <div class="blk"><span class="ln t" style="width:44%"></span><span class="ln" style="width:86%"></span></div>
+        </div>
+      </div>
+
+      <div class="zone"></div>
+
+      <svg class="svg-layer" viewBox="0 0 1000 520" fill="none" stroke="var(--a4)" stroke-width="3.5"
+           stroke-linecap="round">
+        <defs><marker id="n" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" fill="#f08c00" stroke="none"/></marker></defs>
+        <path d="M782 140 C 760 120, 745 132, 722 132" marker-end="url(#n)"/>
+      </svg>
+
+      <div class="noteb">
+        <div class="nt">What lives here</div>
+        <div class="nd">One sentence on why this region is the one that matters.</div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

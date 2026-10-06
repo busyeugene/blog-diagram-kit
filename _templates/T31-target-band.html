@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T31 · target-band</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T31 - a safe zone with a DIFFERENT failure at each end. Use when both ways of getting it wrong
+     cost something, and the reader needs to feel how narrow the acceptable range is. The centre
+     band's flex value controls how wide "safe" looks - make it honest.
+     THREE SIZES ONLY: --fs-xl (headline), --fs-md (zone names), --fs-sm (consequences + axis). */
+  .track3{display:flex;width:100%;height:132px;border-radius:16px;overflow:hidden;box-shadow:var(--lift)}
+  .zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+        padding:0 24px;text-align:center}
+  .zone .zn{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);line-height:1.2}
+  .zone .zd{font-size:var(--fs-sm);line-height:1.35}
+  .z-under{flex:1;background:var(--bad-soft)}  .z-under .zn,.z-under .zd{color:#b42318}
+  .z-par{flex:1.15;background:var(--ok-soft);border-left:3px solid var(--ok);border-right:3px solid var(--ok)}
+  .z-par .zn,.z-par .zd{color:#0b6b4f}
+  .z-over{flex:1;background:var(--warn-soft)}  .z-over .zn,.z-over .zd{color:#b54708}
+  .axis3{display:flex;width:100%;margin-top:14px}
+  .axis3 .l{flex:1;text-align:left;font-size:var(--fs-sm);color:var(--muted)}
+  .axis3 .c{flex:1.15}
+  .axis3 .r{flex:1;text-align:right;font-size:var(--fs-sm);color:var(--muted)}
+  .note3{font-size:var(--fs-md);color:var(--ink);text-align:center;margin-top:38px;line-height:1.5;max-width:840px}
+  .note3 b{font-family:var(--font-head);font-weight:800}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">The safe zone, and what sits either side of it</div>
+
+    <div class="fill col" style="gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center">
+        <div class="track3">
+          <div class="zone z-under"><span class="zn">Too little</span>
+            <span class="zd">what it costs you when you undershoot</span></div>
+          <div class="zone z-par"><span class="zn">The target</span>
+            <span class="zd">what "right" actually looks like</span></div>
+          <div class="zone z-over"><span class="zn">Too much</span>
+            <span class="zd">what it costs you when you overshoot</span></div>
+        </div>
+        <div class="axis3"><span class="l">less</span><span class="c"></span><span class="r">more</span></div>
+        <div class="note3">One line on <b>why the band is as narrow as it is</b> in this particular case.</div>
+      </div>
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T20 · timeline</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T20 — what happens when, on a real axis. Labels alternate above/below so they never collide.
+     Use for rollout plans, "first 90 days", or the life of one order. 4-5 marks. */
+  .tl{position:relative;width:1000px;height:400px}
+  .axis{position:absolute;left:0;right:0;top:200px;height:4px;border-radius:2px;background:var(--line)}
+  .axis .done{position:absolute;left:0;top:0;height:100%;width:64%;border-radius:2px;background:var(--brand)}
+  .mk{position:absolute;top:186px;width:32px;height:32px;margin-left:-16px;border-radius:50%;
+      background:var(--surface);border:5px solid var(--brand);box-sizing:border-box}
+  .mk.todo{border-color:var(--line)}
+  .mlab{position:absolute;width:230px;margin-left:-115px;text-align:center}
+  .mlab .mt{font-family:var(--font-head);font-weight:800;font-size:20px;line-height:1.2}
+  .mlab .md{font-size:15px;color:var(--muted);margin-top:5px;line-height:1.35}
+  .mlab .mw{font-family:var(--font-mono);font-size:14px;color:var(--brand);margin-bottom:6px}
+  .up{bottom:236px} .dn{top:236px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="tl">
+      <div class="axis"><span class="done"></span></div>
+
+      <div class="mk" style="left:8%"></div>
+      <div class="mlab up" style="left:8%"><div class="mw">Week 1</div><div class="mt">First move</div><div class="md">What you do straight away.</div></div>
+
+      <div class="mk" style="left:35%"></div>
+      <div class="mlab dn" style="left:35%"><div class="mw">Week 4</div><div class="mt">Second move</div><div class="md">What that unlocks.</div></div>
+
+      <div class="mk" style="left:64%"></div>
+      <div class="mlab up" style="left:64%"><div class="mw">Week 8</div><div class="mt">Third move</div><div class="md">Where you are now.</div></div>
+
+      <div class="mk todo" style="left:92%"></div>
+      <div class="mlab dn" style="left:92%"><div class="mw" style="color:var(--muted)">Week 12</div><div class="mt">The goal</div><div class="md">What "done" looks like.</div></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

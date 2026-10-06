@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T10 · vs-checklist</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T10 — two options, same criteria, honest scoring. 5-6 rows; more than that and it becomes
+     a table the reader skips. NEVER give one column a clean sweep — it reads as an ad. */
+  .vs{width:100%;background:var(--surface);border-radius:20px;box-shadow:var(--lift);overflow:hidden}
+  .vh,.vr{display:grid;grid-template-columns:1fr 160px 160px;align-items:center}
+  .vh{padding:20px 30px 16px;border-bottom:1.5px solid var(--hair)}
+  .vh .cn{font-family:var(--font-head);font-weight:800;font-size:19px;text-align:center}
+  .vh .cn.b{color:var(--brand)}
+  .vh .ck{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.08em;
+          text-transform:uppercase;color:var(--muted)}
+  .vr{padding:15px 30px;border-bottom:1px solid var(--hair)}
+  .vr:last-child{border-bottom:none}
+  .vr .crit{font-size:18px;font-weight:600;line-height:1.3;padding-right:16px}
+  .vr .mark{margin:0 auto;width:29px;height:29px;font-size:15px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="vs">
+      <div class="vh"><span class="ck">What you are comparing on</span>
+        <span class="cn b">Option A</span><span class="cn">Option B</span></div>
+
+      <div class="vr"><span class="crit">First criterion that matters</span>
+        <span class="mark y">✓</span><span class="mark n">✕</span></div>
+      <div class="vr"><span class="crit">Second criterion</span>
+        <span class="mark y">✓</span><span class="mark y">✓</span></div>
+      <div class="vr"><span class="crit">Third criterion</span>
+        <span class="mark y">✓</span><span class="mark q">~</span></div>
+      <div class="vr"><span class="crit">Fourth criterion</span>
+        <span class="mark n">✕</span><span class="mark y">✓</span></div>
+      <div class="vr"><span class="crit">Fifth criterion</span>
+        <span class="mark q">~</span><span class="mark y">✓</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

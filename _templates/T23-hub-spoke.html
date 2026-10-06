@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T23 · hub-spoke</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T23 — one centre that everything else connects to. Use when the point is that they all
+     depend on the SAME thing (one system of record, one owner, one source). 5-6 spokes. */
+  .hs{position:relative;width:760px;height:700px}
+  .hub{position:absolute;left:380px;top:350px;width:200px;height:200px;margin:-100px 0 0 -100px;
+       border-radius:50%;background:var(--grad-brand);color:#fff;display:flex;align-items:center;
+       justify-content:center;text-align:center;font-family:var(--font-head);font-weight:800;
+       font-size:21px;line-height:1.2;padding:0 24px}
+  .spk{position:absolute;width:196px;height:88px;margin:-44px 0 0 -98px;border-radius:14px;
+       background:var(--surface);box-shadow:var(--lift);display:flex;flex-direction:column;
+       align-items:center;justify-content:center;gap:3px;padding:0 14px}
+  .spk .sn{font-family:var(--font-head);font-weight:700;font-size:17px;text-align:center;line-height:1.2}
+  .spk .sd{font-size:13.5px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body class="r11">
+  <div class="stage">
+    <div class="hs">
+      <svg class="svg-layer" viewBox="0 0 760 700" stroke="var(--line)" stroke-width="3.5" fill="none">
+        <line x1="380" y1="250" x2="380" y2="192"/>
+        <line x1="466" y1="300" x2="530" y2="263"/>
+        <line x1="466" y1="400" x2="530" y2="437"/>
+        <line x1="380" y1="450" x2="380" y2="508"/>
+        <line x1="294" y1="400" x2="230" y2="437"/>
+        <line x1="294" y1="300" x2="230" y2="263"/>
+      </svg>
+
+      <div class="hub">The one<br>thing in<br>the middle</div>
+
+      <div class="spk" style="left:380px;top:148px"><span class="sn">First spoke</span><span class="sd">what it needs</span></div>
+      <div class="spk" style="left:596px;top:225px"><span class="sn">Second spoke</span><span class="sd">what it needs</span></div>
+      <div class="spk" style="left:596px;top:475px"><span class="sn">Third spoke</span><span class="sd">what it needs</span></div>
+      <div class="spk" style="left:380px;top:552px"><span class="sn">Fourth spoke</span><span class="sd">what it needs</span></div>
+      <div class="spk" style="left:164px;top:475px"><span class="sn">Fifth spoke</span><span class="sd">what it needs</span></div>
+      <div class="spk" style="left:164px;top:225px"><span class="sn">Sixth spoke</span><span class="sd">what it needs</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

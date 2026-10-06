@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T28 · do-dont</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T28 — the practice standard, in the reader's own words. Each "don't" is paired with the "do"
+     directly across from it, so the fix is obvious. 4 pairs. */
+  .dd{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;width:100%}
+  .ddh,.ddr{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ddh div{font-family:var(--font-head);font-weight:800;font-size:20px;padding:14px 22px;
+           border-radius:12px;display:flex;align-items:center;gap:10px}
+  .hbad{background:var(--bad-soft);color:#b42318} .hok{background:var(--ok-soft);color:#0b6b4f}
+  .cellx{background:var(--surface);border-radius:12px;padding:17px 22px;font-size:17px;
+         line-height:1.35;box-shadow:var(--lift)}
+  .cellx.no{color:var(--muted);text-decoration-line:line-through;text-decoration-color:#f4b0ab;
+            text-decoration-thickness:2px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">Do this, not that</div>
+
+    <div class="dd">
+      <div class="ddh">
+        <div class="hbad">✕ Don't</div>
+        <div class="hok">✓ Do</div>
+      </div>
+      <div class="ddr"><div class="cellx no">The habit that causes the problem</div>
+        <div class="cellx">What to do instead</div></div>
+      <div class="ddr"><div class="cellx no">The second bad habit</div>
+        <div class="cellx">Its replacement</div></div>
+      <div class="ddr"><div class="cellx no">The third bad habit</div>
+        <div class="cellx">Its replacement</div></div>
+      <div class="ddr"><div class="cellx no">The fourth bad habit</div>
+        <div class="cellx">Its replacement</div></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

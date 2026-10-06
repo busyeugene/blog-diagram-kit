@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T38 · plan-view</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T38 - the same space twice, seen from above, with ONE thing moved. Use it when the argument is
+     spatial: a route that crosses something, a sightline something blocks, a zone in the wrong
+     corner. T05 before-after is the neighbour to check first - it answers "what does the fix
+     change?" as a list of symptoms, and it cannot show WHERE anything is.
+
+     THE RULE THAT MAKES IT WORK: change exactly one thing between the two plans. Keep the room, the
+     door, the fixed points and any route identical, so the difference is attributable to the single
+     move and to nothing else. Two plans that differ in three ways prove nothing.
+
+     THREE THINGS IT HAS TO GET RIGHT, all learned the hard way:
+
+     1. THE SVG GOES AFTER THE ZONE DIVS. base.css's .svg-layer has no z-index, so with the svg
+        first every zone box paints over the route or the shaded area - a line then reads as
+        stopping dead at the obstacle instead of crossing it, and an arrowhead that lands inside a
+        destination box disappears completely.
+
+     2. ZONE LABELS GO IN A CORNER THE GEOMETRY NEVER REACHES, bottom-right here. Centred, a label
+        sits directly under whatever crosses the box, which is the same legibility problem the house
+        rule about text on connector lines exists to prevent.
+
+     3. A CONNECTOR STOPS ON THE DESTINATION'S EDGE, COLLINEAR WITH ITS CENTRE. Arrows land on
+        centres - but ending dead centre buries the arrowhead under that zone's own label, so
+        compute the point where the line meets the box and stop there.
+
+     If the plan shows a SHADOW - what an observer cannot see past an obstacle - remember the ground
+     between the observer and the obstacle is visible. Shade only what lies beyond the obstacle's
+     silhouette, bounded by the two rays from the observer through its outermost corners.
+
+     GEOMETRY of this example, both plans 480 x 330:
+       zone A   left 20  top 18  w 130 h 74
+       zone B   left 330 top 18  w 130 h 74   -> centre (395, 55)
+       obstacle BEFORE left 165 top 120 w 150 h 96 -> centre (240, 168), the route's own vertex
+       obstacle AFTER  left 165 top 228 w 150 h 88     (same x, moved clear of the line)
+       door     left wall y 240-300          -> route starts (8, 270)
+       route    M 8,270 L 240,168 L 344,92   (IDENTICAL in both plans)
+     The route stops at (344,92) on zone B's bottom edge, which is collinear with its centre. */
+  .pv-pair{display:flex;align-items:flex-start;gap:44px}
+  .pv-col{display:flex;flex-direction:column;align-items:center;gap:15px;flex:none}
+  .pv-plan{position:relative;width:480px;height:330px;background:var(--surface);
+           border:2px solid var(--line);border-radius:14px}
+  .pv-z{position:absolute;border-radius:9px;display:flex;align-items:flex-end;
+        justify-content:flex-end;padding:0 12px 9px 0;text-align:right;
+        font-family:var(--font-head);font-weight:700;font-size:var(--fs-sm);
+        line-height:1.25;color:var(--ink)}
+  .pv-a{background:var(--a3-soft)}
+  .pv-b{background:var(--a1-soft)}
+  .pv-ob{background:var(--a4-soft)}
+  /* the door is a gap punched through the wall, drawn over the border */
+  .pv-door{position:absolute;left:-3px;top:240px;width:6px;height:60px;background:var(--surface)}
+  .pv-dl{position:absolute;left:12px;top:304px;font-size:var(--fs-sm);color:var(--muted)}
+  .pv-cap{font-family:var(--font-head);font-weight:700;font-size:var(--fs-md);color:var(--ink)}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">The claim the two plans prove</div>
+    <div class="fill">
+      <div class="pv-pair">
+
+        <div class="pv-col">
+          <div class="pv-plan">
+            <div class="pv-z pv-a" style="left:20px;top:18px;width:130px;height:74px">Fixed point</div>
+            <div class="pv-z pv-b" style="left:330px;top:18px;width:130px;height:74px">Destination</div>
+            <div class="pv-z pv-ob" style="left:165px;top:120px;width:150px;height:96px">In the way</div>
+            <div class="pv-door"></div><div class="pv-dl">Door</div>
+            <svg class="svg-layer" viewBox="0 0 480 330">
+              <defs><marker id="t38a" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5"
+                     markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--bad)"/></marker></defs>
+              <path d="M8 270 L240 168 L344 92" fill="none" stroke="var(--bad)" stroke-width="4"
+                    stroke-dasharray="10 8" stroke-linecap="round" marker-end="url(#t38a)"/>
+            </svg>
+          </div>
+          <div class="pv-cap">What the room does now</div>
+          <span class="pill bad">The cost of leaving it</span>
+        </div>
+
+        <div class="pv-col">
+          <div class="pv-plan">
+            <div class="pv-z pv-a" style="left:20px;top:18px;width:130px;height:74px">Fixed point</div>
+            <div class="pv-z pv-b" style="left:330px;top:18px;width:130px;height:74px">Destination</div>
+            <div class="pv-z pv-ob" style="left:165px;top:228px;width:150px;height:88px">Moved clear</div>
+            <div class="pv-door"></div><div class="pv-dl">Door</div>
+            <svg class="svg-layer" viewBox="0 0 480 330">
+              <defs><marker id="t38b" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5"
+                     markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--ok)"/></marker></defs>
+              <path d="M8 270 L240 168 L344 92" fill="none" stroke="var(--ok)" stroke-width="4"
+                    stroke-dasharray="10 8" stroke-linecap="round" marker-end="url(#t38b)"/>
+            </svg>
+          </div>
+          <div class="pv-cap">The same route, one thing moved</div>
+          <span class="pill ok">What that buys</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="credit">Say on the credit line whether the plan is illustrative or drawn to a real
+      dimension. This one is illustrative.</div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

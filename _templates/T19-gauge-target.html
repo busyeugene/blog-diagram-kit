@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T19 · gauge-target</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T19 — one number against the bar it has to clear. The gap between the fill and the target
+     tick IS the image. Put the readout BELOW the arc, never inside it. */
+  .gg{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .gg svg{width:560px;height:322px}
+  .read{font-family:var(--font-head);font-weight:800;font-size:96px;letter-spacing:-.035em;
+         line-height:1;margin-top:-58px}
+  .rl{font-size:19px;color:var(--muted);margin-top:12px}
+  .tgt{margin-top:26px}
+</style>
+</head>
+<body class="r11">
+  <div class="stage">
+    <div class="gg">
+      <!-- arc length = pi * r = pi * 170 = 534.07 ; fill = 534.07 * 0.78 = 416.6 -->
+      <svg viewBox="0 0 400 230">
+        <path d="M30 200 A170 170 0 0 1 370 200" fill="none" stroke="#e0e4eb" stroke-width="30" stroke-linecap="round"/>
+        <path d="M30 200 A170 170 0 0 1 370 200" fill="none" stroke="var(--brand)" stroke-width="30"
+              stroke-linecap="round" stroke-dasharray="416.6 534.07"/>
+        <!-- target tick at 85% -->
+        <line x1="333.7" y1="131.9" x2="369.3" y2="113.7" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="read">78%</div>
+      <div class="rl">What you are hitting today</div>
+      <span class="pill out tgt">Target 85%</span>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T05 · before-after</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T05 — the same thing in two states. Left = the messy status quo, right = after the fix.
+     The change between them must be visible in the SHAPES, not only in the words. */
+  .ba{display:flex;align-items:center;gap:34px;width:100%}
+  .ba .panel{padding:28px 30px;gap:14px}
+  .ba .ph{display:flex;align-items:center;justify-content:space-between}
+  .ba .pt{font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.015em}
+  .mid{display:flex;flex-direction:column;align-items:center;gap:12px;flex:none;width:150px}
+  .mid .arw{width:130px;height:3px}
+  .mid .what{font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--brand);text-align:center}
+  .l-bad{background:var(--bad-soft)} .l-ok{background:var(--ok-soft)}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="ba">
+      <div class="panel flat">
+        <div class="ph"><span class="pt">Before</span><span class="pill bad">4 h 20 m</span></div>
+        <div class="sep"></div>
+        <div class="list">
+          <div class="item"><span class="mark n">✕</span>Something that goes wrong</div>
+          <div class="item"><span class="mark n">✕</span>Something else that goes wrong</div>
+          <div class="item"><span class="mark n">✕</span>The third symptom</div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="what">the one change</div>
+        <span class="arw brand"></span>
+      </div>
+
+      <div class="panel win-side">
+        <div class="ph"><span class="pt">After</span><span class="pill ok">38 m</span></div>
+        <div class="sep"></div>
+        <div class="list">
+          <div class="item"><span class="mark y">✓</span>What replaces it</div>
+          <div class="item"><span class="mark y">✓</span>What replaces the second</div>
+          <div class="item"><span class="mark y">✓</span>What replaces the third</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

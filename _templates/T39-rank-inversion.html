@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T39 &middot; rank-inversion</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T39 - the published order and the underlying measure disagree. The same items in two columns,
+     ordered two different ways, with connectors showing which ones cross. Reach for it whenever a
+     source ranks things by one thing and reports another, or whenever an article says "frequency is
+     not risk", "the biggest is not the most common" or "it ranks higher and scores lower".
+
+     WHY IT IS NOT A BAR CHART. The usual instinct is to plot the measure and let the reader see the
+     order. That fails exactly when this template is needed, because the pairs that invert are
+     almost always CLOSE on the measure - two values within a couple of percent render as identical
+     blocks and read as a rendering fault. The positions carry the comparison instead, and the
+     measure sits on each card as a label.
+
+     ONLY ORDER WHAT THE SOURCE MEASURES. If some items publish no value, leave them out of the
+     second column rather than guessing at a position; say so on the credit line. An inversion
+     drawn over invented ranks is worse than no image.
+
+     GEOMETRY. The svg is sized to the real height of a column (rows x height + gaps x gap) and
+     placed in the middle grid track, AFTER the columns in source order so it paints over them.
+     Connectors carry NO text - every label sits on an endpoint card. Row height is fixed so the
+     curve endpoints land on row centres.
+
+     Three sizes: 34 title / 21 column headings / 15.5 rows and note. */
+  .ri{width:1056px;display:flex;flex-direction:column;gap:16px}
+
+  .ri-head{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);align-items:end}
+  .ri-head b{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--ink);
+             line-height:1.2}
+  .ri-head b:last-child{text-align:right}
+  .ri-head i{font-style:normal}
+
+  .ri-body{position:relative;display:grid;
+           grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr)}
+
+  .ri-col{display:flex;flex-direction:column;gap:14px}
+  .ri-c{height:68px;border-radius:12px;background:var(--surface);border:1px solid var(--line);
+        display:flex;align-items:center;gap:12px;padding:0 16px}
+  .ri-c.moved{border-color:var(--brand)}
+  .ri-c em{font-style:normal;font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);
+           color:var(--subtle);flex:none;width:26px;text-align:center}
+  .ri-c.moved em{color:var(--brand)}
+  .ri-c span{font-size:var(--fs-sm);color:var(--ink);line-height:1.25}
+  .ri-c b{font-family:var(--font-head);font-weight:700;font-size:var(--fs-sm);color:var(--brand);
+          margin-left:auto;flex:none}
+  .ri-c.quiet b{color:var(--muted)}
+
+  /* 4 rows x 68 + 3 gaps x 14 = 314 */
+  .ri-svg{position:absolute;left:calc(50% - 75px);top:0;width:150px;height:314px}
+
+  .ri-note{border-radius:14px;background:var(--brand-soft);padding:17px 22px;
+           font-size:var(--fs-sm);color:var(--ink);line-height:1.45}
+  .ri-note b{font-weight:700;color:var(--brand)}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top" style="gap:12px">
+    <div class="t-title sm">The order is not the measure's order</div>
+
+    <div class="fill col" style="gap:0;justify-content:center">
+      <div class="ri">
+
+        <div class="ri-head">
+          <b>Ranked as published</b><i></i><b>Ranked by the measure</b>
+        </div>
+
+        <div class="ri-body">
+          <div class="ri-col">
+            <div class="ri-c moved"><em>1</em><span>First item</span><b>3.73%</b></div>
+            <div class="ri-c"><em>2</em><span>Second item</span><b>3.00%</b></div>
+            <div class="ri-c moved"><em>3</em><span>Third item</span><b>lowest</b></div>
+            <div class="ri-c"><em>4</em><span>Fourth item</span><b>3.80%</b></div>
+          </div>
+
+          <div></div>
+
+          <div class="ri-col">
+            <div class="ri-c"><em>1</em><span>Fourth item</span><b>3.80%</b></div>
+            <div class="ri-c moved"><em>2</em><span>First item</span><b>3.73%</b></div>
+            <div class="ri-c"><em>3</em><span>Second item</span><b>3.00%</b></div>
+            <div class="ri-c moved quiet"><em>4</em><span>Third item</span><b>lowest</b></div>
+          </div>
+
+          <svg class="ri-svg" viewBox="0 0 150 314" fill="none">
+            <!-- row centres at 34, 116, 198, 280 -->
+            <path d="M0 34 C 60 34, 90 116, 150 116" stroke="var(--brand)" stroke-width="2.5"/>
+            <path d="M0 116 C 60 116, 90 198, 150 198" stroke="var(--line)" stroke-width="2.5"/>
+            <path d="M0 198 C 60 198, 90 280, 150 280" stroke="var(--brand)" stroke-width="2.5"/>
+            <path d="M0 280 C 60 280, 90 34, 150 34" stroke="var(--brand)" stroke-width="2.5"/>
+          </svg>
+        </div>
+
+        <div class="ri-note">Say what the published order weighs that the measure does not. The
+          crossing is the finding, and <b>the reason for it is the sentence underneath.</b></div>
+
+      </div>
+    </div>
+
+    <div class="credit">Name the source and say which items publish no value for the measure, since
+      those are left out of the second column rather than placed.</div>
+    <div class="site">yourdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T25 · layer-cake</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T25 — a pyramid of dependence: you cannot have the top without the bottom. Different from
+     T16 (exploded-stack) — that shows PARTS, this shows PREREQUISITES. */
+  .lc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:13px;width:100%}
+  .lyr{border-radius:14px;padding:26px 30px;text-align:center;color:#fff}
+  .lyr .lt{font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.01em}
+  .lyr .ld{font-size:16px;opacity:.92;margin-top:6px;line-height:1.35}
+  .foot-note{font-size:17px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.4}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top">
+    <div class="t-title sm">Nothing above works<br>without what is below</div>
+
+    <div class="lc">
+      <div class="lyr" style="width:50%;background:var(--a1)">
+        <div class="lt">The outcome</div><div class="ld">what you are actually after</div></div>
+      <div class="lyr" style="width:68%;background:var(--a2)">
+        <div class="lt">The capability</div><div class="ld">what makes the outcome repeatable</div></div>
+      <div class="lyr" style="width:85%;background:#4c8fdb">
+        <div class="lt">The process</div><div class="ld">the steps someone follows every day</div></div>
+      <div class="lyr" style="width:100%;background:var(--ink)">
+        <div class="lt">The foundation</div><div class="ld">accurate data, captured once, at the source</div></div>
+      <div class="foot-note">Skip a layer and the one above it quietly stops working.</div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T30 · unit-grid-gap</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T30 — a percentage drawn as countable objects. 100 cells = the whole; the shortfall is ghosted,
+     so the number and the physical gap are the same picture. Built for inventory accuracy; use it
+     for any "x% of y" where the reader should FEEL the remainder (defect rates, coverage, uptime).
+     Keep the grid at 10x10 — it is the only size where a reader can verify the count at a glance.
+     THREE SIZES ONLY: --fs-xl (the counts + the percentage), --fs-sm (labels, legend, chip). */
+  .rv{display:flex;align-items:center;gap:70px}
+  .txt{width:400px}
+  .rowq{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;
+        border-bottom:1px solid var(--hair)}
+  .rowq .k{font-size:var(--fs-sm);color:var(--muted)}
+  .rowq .v{font-family:var(--font-head);font-weight:800;font-size:var(--fs-xl);letter-spacing:-.025em}
+  .rowq.miss .k,.rowq.miss .v{color:var(--bad)}
+  .acc{margin-top:22px}
+  .acc .n{font-family:var(--font-head);font-weight:800;font-size:var(--fs-xl);letter-spacing:-.03em;
+          color:var(--brand);line-height:1}
+  .acc .l{font-size:var(--fs-sm);color:var(--muted);margin-top:8px;line-height:1.4}
+  .tagchip{font-family:var(--font-mono);font-size:var(--fs-sm);color:var(--brand);
+           background:var(--brand-soft);border-radius:6px;padding:5px 10px;display:inline-block;
+           margin-bottom:18px}
+
+  .grid100{display:grid;grid-template-columns:repeat(10,34px);gap:8px}
+  .cell{width:34px;height:34px;border-radius:7px;background:var(--brand)}
+  .cell.gone{background:transparent;border:2px dashed #f0a9a9}
+  .glab{display:flex;align-items:center;gap:9px;margin-top:20px;font-size:var(--fs-sm);color:var(--muted)}
+  .key{width:16px;height:16px;border-radius:4px;display:inline-block}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="rv">
+      <div class="txt">
+        <span class="tagchip">what you are counting</span>
+        <div class="rowq"><span class="k">What the record says</span><span class="v">100</span></div>
+        <div class="rowq miss"><span class="k">What is actually there</span><span class="v">92</span></div>
+        <div class="acc"><div class="n">92%</div>
+          <div class="l">and every decision made from the record<br>inherits the other 8</div></div>
+      </div>
+
+      <div>
+        <div class="grid100">
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span><span class="cell gone"></span>
+        </div>
+        <div class="glab"><span class="key" style="background:var(--brand)"></span>actually there
+          <span class="key" style="border:2px dashed #f0a9a9;margin-left:16px"></span>on the record only</div>
+      </div>
+    </div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

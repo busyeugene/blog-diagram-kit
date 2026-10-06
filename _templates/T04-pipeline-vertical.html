@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T04 · pipeline-vertical</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T04 — an ordered top-to-bottom sequence, one stage flagged as the bottleneck. Square canvas:
+     the stack stays tall enough to read as a sequence without going letterbox-narrow. 4-6 stages. */
+  .pv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:0;width:100%}
+  .stg{width:100%;background:var(--surface);border-radius:16px;box-shadow:var(--lift);
+       padding:22px 26px;display:flex;align-items:center;gap:20px}
+  .stg .st{font-family:var(--font-head);font-weight:800;font-size:22px;letter-spacing:-.01em}
+  .stg .sm{font-size:15px;color:var(--muted);margin-top:3px}
+  .pv .arw.dn{height:32px;margin:9px 0}
+  .stg.hot{outline:2.5px solid var(--warn);outline-offset:-2.5px}
+  .stg.hot .num{background:var(--warn)}
+  .stg .flag{margin-left:auto;font-family:var(--font-head);font-weight:800;font-size:12.5px;
+             letter-spacing:.05em;text-transform:uppercase;color:#b54708;background:var(--warn-soft);
+             border-radius:999px;padding:7px 14px}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top">
+    <div class="t-title">Stage by stage</div>
+
+    <div class="pv">
+      <div class="stg"><span class="num">1</span><div><div class="st">First stage</div><div class="sm">what happens here</div></div></div>
+      <span class="arw dn soft"></span>
+      <div class="stg"><span class="num">2</span><div><div class="st">Second stage</div><div class="sm">what happens here</div></div></div>
+      <span class="arw dn soft"></span>
+      <div class="stg hot"><span class="num">3</span><div><div class="st">Third stage</div><div class="sm">where orders actually sit</div></div><span class="flag">Bottleneck</span></div>
+      <span class="arw dn soft"></span>
+      <div class="stg"><span class="num">4</span><div><div class="st">Fourth stage</div><div class="sm">what happens here</div></div></div>
+      <span class="arw dn soft"></span>
+      <div class="stg"><span class="num">5</span><div><div class="st">Fifth stage</div><div class="sm">what happens here</div></div></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

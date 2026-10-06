@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T03 · cycle-loop</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T03 — a 4-part loop that feeds itself: the last step is the reason the first one happens again.
+     Labels sit RADIALLY OUTWARD (top above / right to the right / bottom below / left to the left)
+     — putting them under every node makes the left+right ones collide with the connecting arcs. */
+  .ring{position:relative;width:560px;height:560px}          /* node centres on R=210 */
+  .ring .node{position:absolute;width:140px;height:140px;margin:-70px 0 0 -70px}
+  .n-top {left:280px;top:70px}  .n-right{left:490px;top:280px}
+  .n-bot {left:280px;top:490px} .n-left {left:70px; top:280px}
+
+  .ring .lab{position:absolute;width:190px;font-size:20px;line-height:1.25}
+  .l-top {left:185px;top:-92px;height:82px;display:flex;flex-direction:column;justify-content:flex-end}
+  .l-bot {left:185px;top:570px}
+  .l-right{left:582px;top:280px;transform:translateY(-50%);text-align:left;width:168px}
+  .l-left {left:-190px;top:280px;transform:translateY(-50%);text-align:right;width:168px}
+  .ring .sub{display:block;font-family:var(--font-body);font-weight:600;font-size:16px;color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body class="r11">
+  <div class="stage">
+    <div class="ring">
+      <svg class="svg-layer" viewBox="0 0 560 560" style="overflow:visible">
+        <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 z" fill="#ced3de"/></marker></defs>
+        <!-- each arc spans 25°→65° of its quadrant, leaving a clear gap at every node -->
+        <g fill="none" stroke="#ced3de" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)">
+          <path d="M368.7 90.7  A210 210 0 0 1 469.3 191.3"/>
+          <path d="M469.3 368.7 A210 210 0 0 1 368.7 469.3"/>
+          <path d="M191.3 469.3 A210 210 0 0 1 90.7 368.7"/>
+          <path d="M90.7 191.3  A210 210 0 0 1 191.3 90.7"/>
+        </g>
+      </svg>
+
+      <div class="node a2 n-top"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></div>
+      <div class="lab l-top">Step one<span class="sub">the trigger</span></div>
+
+      <div class="node a5 n-right"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 4v3M16 20v-3"/></svg></div>
+      <div class="lab l-right">Step two</div>
+
+      <div class="node a3 n-bot"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div>
+      <div class="lab l-bot">Step three</div>
+
+      <div class="node a4 n-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div>
+      <div class="lab l-left">Step four<span class="sub">feeds step one</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

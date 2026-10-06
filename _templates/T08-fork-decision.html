@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T08 · fork-decision</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T08 — a checkpoint with two outcomes. Use for any "if it passes / if it fails" rule.
+     The gate is a rotated square so it reads as a decision, not another step. */
+  .fk{display:flex;align-items:center;gap:0}
+  .gate{width:150px;height:150px;transform:rotate(45deg);border-radius:22px;background:var(--surface);
+        border:2.5px solid var(--brand);display:flex;align-items:center;justify-content:center;flex:none}
+  .gate span{transform:rotate(-45deg);font-family:var(--font-head);font-weight:800;font-size:18px;
+             text-align:center;line-height:1.2;color:var(--brand);width:120px}
+  /* CONNECTOR GEOMETRY — see T02. Column = 2 rows x 120 + 1 gap x 44 = 284. Row centres: 60 / 224.
+     The svg height must equal the column height or the arrows drift off the circles. */
+  .split{width:190px;height:284px;flex:none}
+  .outs{display:flex;flex-direction:column;gap:44px}
+  .out{display:flex;align-items:center;gap:18px;height:120px}
+  .out .lab{text-align:left}
+  .out .cap{text-align:left;margin-top:2px}
+  /* NO TEXT ON THE CONNECTORS — the branch name is a pill on the outcome it leads to. */
+  .branch{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:12.5px;
+          letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:5px 12px;
+          margin-bottom:8px}
+  .branch.ok{background:var(--ok-soft);color:#0b6b4f}
+  .branch.no{background:var(--bad-soft);color:#b42318}
+  .lead{display:flex;flex-direction:column;align-items:center;gap:16px;width:180px}
+</style>
+</head>
+<body class="r169">
+  <div class="stage">
+    <div class="fk">
+      <div class="lead">
+        <div class="doc sm"><span class="ln head"></span><span class="ln"></span><span class="ln" style="width:60%"></span></div>
+        <div class="lab sm">What arrives</div>
+      </div>
+
+      <span class="arw short" style="margin:0 6px"></span>
+
+      <div class="gate"><span>Does it pass<br>the check?</span></div>
+
+      <svg class="split" viewBox="0 0 190 284" fill="none" stroke-width="4" stroke-linecap="round">
+        <defs>
+          <marker id="g" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="#0ca678" stroke="none"/></marker>
+          <marker id="r" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="#e03131" stroke="none"/></marker>
+        </defs>
+        <path d="M8 142 C 80 142, 90 60, 182 60"   stroke="var(--ok)"  marker-end="url(#g)"/>
+        <path d="M8 142 C 80 142, 90 224, 182 224" stroke="var(--bad)" marker-end="url(#r)"/>
+      </svg>
+
+      <div class="outs">
+        <div class="out"><div class="node sm a3"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><span class="branch ok">Yes</span>
+            <div class="lab">Carries on</div><div class="cap">the happy path</div></div></div>
+        <div class="out"><div class="node sm" style="background:var(--bad-soft);border-color:transparent;color:var(--bad)">
+            <svg viewBox="0 0 24 24"><path d="M12 8v5M12 17h.01"/><path d="M10.3 3.9 2.6 17.2A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+          <div><span class="branch no">No</span>
+            <div class="lab">Held as an exception</div><div class="cap">named owner, fixed deadline</div></div></div>
+      </div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

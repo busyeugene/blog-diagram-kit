@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T11 · quadrant</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T11 — two axes that turn a vague judgement into a position. Name the quadrants; the axes
+     must be real trade-offs (effort vs payback, cost vs risk), never "good vs bad". */
+  .qw{position:relative;width:720px;height:720px}
+  .qg{position:absolute;left:80px;top:0;width:640px;height:640px;
+      display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+  .q{border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between}
+  .q .qn{font-family:var(--font-head);font-weight:800;font-size:21px;letter-spacing:-.01em}
+  .q .qd{font-size:15px;color:var(--muted);line-height:1.35;margin-top:5px}
+  .q1{background:var(--a3-soft)} .q2{background:var(--a4-soft)}
+  .q3{background:var(--a2-soft)} .q4{background:#e6e8ee}
+  .ax{position:absolute;font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--muted);
+      letter-spacing:.04em;text-transform:uppercase}
+  .ax-x{left:80px;width:640px;top:662px;text-align:center}
+  /* rotate(-90) spins about the element centre, so the visual x is (left + width/2).
+     Keep that clear of the grid's left edge (80px) or the label sits on top of the cells. */
+  .ax-y{left:-284px;top:312px;width:640px;text-align:center;transform:rotate(-90deg)}
+  .tick{position:absolute;font-size:14px;font-weight:600;color:var(--muted)}
+</style>
+</head>
+<body class="r11">
+  <div class="stage">
+    <div class="qw">
+      <div class="qg">
+        <div class="q q1"><span class="qn">Do first</span><span class="qd">High payback, low effort</span></div>
+        <div class="q q2"><span class="qn">Plan it</span><span class="qd">High payback, real effort</span></div>
+        <div class="q q3"><span class="qn">Fill-in</span><span class="qd">Cheap, but small gain</span></div>
+        <div class="q q4"><span class="qn">Skip</span><span class="qd">Costly and low payback</span></div>
+      </div>
+      <span class="ax ax-x">Effort  →</span>
+      <span class="ax ax-y">Payback  →</span>
+      <span class="tick" style="left:44px;top:634px">low</span>
+      <span class="tick" style="left:44px;top:-6px">high</span>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

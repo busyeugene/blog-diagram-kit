@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T18 · bar-ranking</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T18 — sorted bars, one highlighted. Bar width MUST be proportional to its number
+     (state the scale in a comment). Sort descending; the highlighted bar is the article's point. */
+  .rk{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;width:100%}
+  .rk .bar-row{grid-template-columns:230px 1fr 96px}
+  .rk .bar-track{background:#e4e7ee}
+  .rk .hi .bar-lab{color:var(--a4)} .rk .hi .bar-val{color:var(--a4)}
+</style>
+</head>
+<body class="r11">
+  <div class="stage top">
+    <div class="t-title">Ranked by impact</div>
+    <div class="t-sub">scale: full track = 100%</div>
+
+    <div class="rk">
+      <div class="bar-row hi"><span class="bar-lab">The biggest one</span>
+        <span class="bar-track"><span class="bar-fill a4" style="width:92%"></span></span><span class="bar-val">92%</span></div>
+      <div class="bar-row"><span class="bar-lab">Second</span>
+        <span class="bar-track"><span class="bar-fill" style="width:71%"></span></span><span class="bar-val">71%</span></div>
+      <div class="bar-row"><span class="bar-lab">Third</span>
+        <span class="bar-track"><span class="bar-fill" style="width:58%"></span></span><span class="bar-val">58%</span></div>
+      <div class="bar-row"><span class="bar-lab">Fourth</span>
+        <span class="bar-track"><span class="bar-fill muted" style="width:34%"></span></span><span class="bar-val">34%</span></div>
+      <div class="bar-row"><span class="bar-lab">Fifth</span>
+        <span class="bar-track"><span class="bar-fill muted" style="width:19%"></span></span><span class="bar-val">19%</span></div>
+    </div>
+
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

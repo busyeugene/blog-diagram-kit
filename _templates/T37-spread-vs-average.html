@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T37 &middot; spread-vs-average</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T37 - the summary statistic everyone quotes describes almost none of the cases. A distribution
+     with the median tagged on the bucket most of the population is in, and the mean tagged on a
+     bucket that is nearly empty. Reach for it whenever an article says "look at the spread, not the
+     average" - the tail is the finding and a mean hides it.
+
+     Bar heights are COUNTS against the tallest bucket, and the counts must add to the stated
+     sample. Here 24 / 7 / 4 / 6 / 9 = 50, so 100 / 29.2 / 16.7 / 25 / 37.5%.
+     The plot needs a real height or the percentages resolve against nothing and the bars vanish. */
+  .avplot{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;width:100%;height:290px;
+          align-items:end}
+  .avcol{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+         gap:10px}
+  .avtag{border-radius:999px;padding:8px 14px;font-family:var(--font-head);font-weight:800;
+         font-size:var(--fs-sm);white-space:nowrap;line-height:1.2}
+  .avtag.med{background:var(--brand);color:#fff}
+  .avtag.avg{background:var(--bad);color:#fff}
+  .avn{font-family:var(--font-head);font-weight:800;font-size:var(--fs-md);color:var(--ink)}
+  .avbar{width:100%;border-radius:10px 10px 0 0;background:var(--brand-soft)}
+  .avbar.hot{background:var(--bad-soft)}
+  .avaxis{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;width:100%;margin-top:14px;
+          padding-top:14px;border-top:2px solid var(--line)}
+  .avaxis span{text-align:center;font-size:var(--fs-sm);color:var(--muted);line-height:1.3}
+  .avnote{margin-top:26px;font-size:var(--fs-sm);color:var(--ink);line-height:1.5;text-align:center;
+          max-width:900px}
+  .avnote b{font-family:var(--font-head);font-weight:800}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">The average lands where almost nothing is</div>
+
+    <div class="fill col" style="gap:0">
+      <div class="avplot">
+        <div class="avcol"><span class="avtag med">median &middot; low</span>
+          <span class="avn">24</span><span class="avbar" style="height:100%"></span></div>
+        <div class="avcol"><span class="avn">7</span>
+          <span class="avbar" style="height:29.2%"></span></div>
+        <div class="avcol"><span class="avtag avg">average &middot; here</span>
+          <span class="avn">4</span><span class="avbar hot" style="height:16.7%"></span></div>
+        <div class="avcol"><span class="avn">6</span>
+          <span class="avbar" style="height:25%"></span></div>
+        <div class="avcol"><span class="avn">9</span>
+          <span class="avbar" style="height:37.5%"></span></div>
+      </div>
+
+      <div class="avaxis">
+        <span>lowest band</span><span>second</span><span>middle</span>
+        <span>fourth</span><span>the tail</span>
+      </div>
+
+      <div class="avnote">Fifty cases. The average sits in a band holding four of them.
+        <b>The tail is the finding &mdash; and a mean hides it.</b></div>
+    </div>
+
+    <div class="credit">Counts must add to the stated sample; label the evidence grade if they are illustrative</div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>

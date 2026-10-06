@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>T32 · sawtooth-replenishment</title>
+<link rel="stylesheet" href="../_system/brand-neutral.css">
+<link rel="stylesheet" href="../_system/base.css">
+<style>
+  /* T32 - a level over time, drawn as a sawtooth against two reference lines. Use for par levels,
+     reorder points, buffers, capacity ceilings - anything that depletes and refills.
+     The gap between the lower line and zero is usually the real point: you act while there is
+     still headroom, not after you have run out.
+     Plot area is 880 x 356. Set the top line at y=0 and the lower line proportionally.
+     THREE SIZES ONLY: --fs-xl (headline), --fs-md (line labels), --fs-sm (axis + credit). */
+  .chart{position:relative;width:1000px;height:400px}
+  .plot{position:absolute;left:120px;top:0;right:0;bottom:44px;
+        border-left:2px solid var(--line);border-bottom:2px solid var(--line)}
+  .ref{position:absolute;left:0;right:0;height:0;border-top:2px dashed var(--brand)}
+  .ref.low{border-top-color:var(--warn)}
+  .reflab{position:absolute;left:-120px;width:110px;text-align:right;transform:translateY(-50%);
+          font-family:var(--font-head);font-weight:800;font-size:var(--fs-md)}
+  .reflab small{display:block;font-family:var(--font-body);font-weight:600;font-size:var(--fs-sm);
+                color:var(--muted);margin-top:2px}
+  .hi-l{color:var(--brand)} .low-l{color:#b54708}
+  .xlab{position:absolute;bottom:-34px;transform:translateX(-50%);font-size:var(--fs-sm);
+        color:var(--muted);white-space:nowrap}
+  .rate2{position:absolute;bottom:14px;font-size:var(--fs-sm);color:var(--brand);
+         font-family:var(--font-head);font-weight:800;transform:translateX(-50%)}
+</style>
+</head>
+<body class="r169">
+  <div class="stage top">
+    <div class="t-title sm">What the level does between top-ups</div>
+
+    <div class="fill">
+      <div class="chart">
+        <div class="plot">
+          <div class="ref" style="top:0"></div>
+          <div class="reflab hi-l" style="top:0">Full<small>the ceiling</small></div>
+
+          <div class="ref low" style="top:285px"></div>
+          <div class="reflab low-l" style="top:285px">Trigger<small>act at this line</small></div>
+
+          <svg class="svg-layer" viewBox="0 0 880 356" preserveAspectRatio="none" fill="none">
+            <polyline points="0,0 220,285 220,0 440,285 440,0 660,285 660,0 880,178"
+                      stroke="var(--brand)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+
+          <span class="xlab" style="left:0">top-up</span>
+          <span class="xlab" style="left:220px">top-up</span>
+          <span class="xlab" style="left:440px">top-up</span>
+          <span class="xlab" style="left:660px">top-up</span>
+          <span class="rate2" style="left:110px">the rate it drains</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="credit">State the real depletion rate here, and keep the slope proportional to it</div>
+    <div class="site">clientdomain.com</div>
+  </div>
+</body></html>
