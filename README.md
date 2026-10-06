@@ -32,8 +32,8 @@ The workflow was built and tested on Windows. The scripts are written to work on
 
 1. **Get the repo.**
    ```bash
-   git clone https://github.com/<owner>/<repo>.git
-   cd <repo>
+   git clone https://github.com/busyeugene/blog-diagram-kit.git
+   cd blog-diagram-kit
    ```
 2. **Open the folder in Claude Code** and say:
    > Onboard my brand: https://www.yoursite.com
